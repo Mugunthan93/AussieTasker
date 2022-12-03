@@ -1,0 +1,74 @@
+<ion-content style="height: 100vh">
+  <div class="startup">
+    <ion-grid>
+      <ion-row class="ion-justify-content-end">
+        <p class="skip ion-margin-end" routerLink="/signup">Skip</p>
+      </ion-row>
+      <ion-row>
+        <swiper
+          #swiper
+          [initialSlide]="slideIndex"
+          [pagination]="{clickable: true}"
+          (activeIndexChange)="onSwiper()"
+        >
+          <ng-template swiperSlide>
+            <div class="slide-item">
+              <ion-img
+                class="slide-img mt-2"
+                src="assets/images/startup/1.png"
+                alt="Create Profile"
+              ></ion-img>
+              <h1 class="slide-header mt-5">Create Profile</h1>
+              <p class="slide-content mt-2 text-center">
+                Get yourself registered & post your skills & need or requirments
+              </p>
+            </div>
+          </ng-template>
+          <ng-template swiperSlide>
+            <div class="slide-item">
+              <ion-img
+                class="slide-img mt-2"
+                src="assets/images/startup/2.png"
+                alt="Create Profile"
+              ></ion-img>
+              <h1 class="slide-header mt-5">Analysis your data</h1>
+              <p class="slide-content mt-2 text-center">
+                Grow your business, client-base or even just your skills
+              </p>
+            </div>
+          </ng-template>
+          <ng-template swiperSlide>
+            <div class="slide-item">
+              <ion-img
+                class="slide-img mt-2"
+                src="assets/images/startup/3.png"
+                alt="Create Profile"
+              ></ion-img>
+              <h1 class="slide-header mt-5">Find Banks and Atms around you</h1>
+              <p class="slide-content mt-2 text-center">
+                Find the closest downtown Atms and banks near you
+              </p>
+            </div>
+          </ng-template>
+        </swiper>
+      </ion-row>
+
+      <ion-row class="ion-justify-content-end">
+        <button
+          class="next-item ion-margin-end"
+          (click)="slideNext()"
+          *ngIf="slideIndex !== 2"
+        >
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </button>
+        <button
+          class="next-item ion-margin-end"
+          *ngIf="slideIndex === 2"
+          (click)="slideFinish()"
+        >
+          <ion-icon name="checkmark-outline"></ion-icon>
+        </button>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

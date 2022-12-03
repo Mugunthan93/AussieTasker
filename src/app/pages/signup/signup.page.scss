@@ -1,0 +1,148 @@
+:host {
+  height: 100vh;
+  // margin-top: 5vh;
+}
+
+.signUp {
+  .signUp-grid {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .avatar {
+    background: var(--green);
+    background-image: url("../../../assets/images/login/Logo-aussie-tasker.png");
+    background-size: contain;
+    width: 90%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    margin: 0% 5%;
+  }
+
+  .signUp_header {
+    font-size: 24px;
+    font-weight: 900;
+    font-family: "Poppins-bold";
+  }
+
+  .signUp_subHeader {
+    font-size: 14px;
+    margin: 0;
+    color: var(--grey);
+  }
+
+  .signUp_form {
+    .form_label {
+      width: 8%;
+      margin-right: 2%;
+    }
+
+    .form_input {
+      font-size: 12px !important;
+    }
+
+    .form_icon {
+      font-size: 23px;
+      color: var(--grey);
+    }
+
+    .form_forgot {
+      margin: 5px 0;
+      cursor: pointer;
+      a {
+        color: var(--green);
+        font-size: 14px;
+      }
+    }
+
+    .signUp_submit {
+      width: 100%;
+      padding: 15px 0;
+      background: #000;
+      color: #fff;
+      border-radius: 15px;
+    }
+
+    .form_signUp_width {
+      font-size: 12px;
+      color: var(--grey);
+    }
+
+    .signUp_facebook,
+    .signUp_google {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0px 0px 7px 0px #8d8d8d6e;
+      padding: 6% 10%;
+      width: 97%;
+      display: inline-flex;
+      align-items: center;
+      font-weight: 900;
+      justify-content: space-around;
+      font-size: 14px;
+
+      ion-icon {
+        font-size: 25px;
+      }
+    }
+
+    .social-icon {
+      width: 20%;
+    }
+
+    .signUp_facebook {
+      color: #2196f3;
+    }
+
+    .signUp_google {
+      color: #e3665c;
+    }
+  }
+
+  .signUp_agree {
+    font-size: 12px;
+    color: var(--grey);
+    span {
+      color: var(--green);
+      cursor: pointer;
+    }
+  }
+
+  .signUp_login {
+    font-size: 14px;
+    a {
+      color: var(--green);
+      cursor: pointer;
+      text-decoration: none;
+      font-family: var(--font-bold);
+    }
+  }
+}
+
+ion-toast.custom-toast {
+  --background: var(--green);
+  --box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+  .toast-wrapper {
+    --color: #fff;
+    background: var(--green) !important;
+    color: #fff !important;
+    box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .toast-message {
+    white-space: break-spaces !important;
+    font-family: var(--font-reg) !important;
+  }
+}
+
+ion-toast.custom-toast::part(message) {
+  --font-family: var(--font-reg);
+  --white-space: break-spaces;
+  --color: #fff;
+  color: #fff !important;
+}
+
+ion-toast.custom-toast::part(button) {
+  --color: #fff;
+  color: #fff !important;
+}

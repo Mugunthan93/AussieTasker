@@ -1,0 +1,103 @@
+<ion-content class="verify">
+  <div class="verify-grid">
+    <ion-grid>
+      <ion-row class="ion-justify-content-center ion-align-items-center">
+        <ion-col size="4" sizeSm="3" sizeMd="2" sizeLg="1">
+          <div class="avatar"></div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="8">
+          <h1 class="login_header ion-text-center">OTP Verification</h1>
+          <p class="login_subHeader ion-text-center">
+            Enter One Time Password sent to you
+          </p>
+        </ion-col>
+      </ion-row>
+      <ion-row
+        class="ion-justify-content-center ion-items-center ion-margin-top login_form"
+      >
+        <ion-col size="10">
+          <form autocomplete="off">
+            <div class="d-flex ion-justify-content-center">
+              <input
+                type="number"
+                class="form_input"
+                id="input_1"
+                #inp1
+                [min]="0"
+                [max]="9"
+                (keyup)="onInputChange($event, inp1, null, inp2)"
+                (keypress)="($event.charCode >= 48 && $event.charCode < 58 )"
+                autofocus
+              />
+              <input
+                type="number"
+                class="form_input"
+                id="input_1"
+                #inp2
+                [min]="0"
+                [max]="9"
+                (keyup)="onInputChange($event, inp2, inp1, inp3)"
+                (keypress)="($event.charCode >= 48 && $event.charCode < 58 )"
+              />
+              <input
+                type="number"
+                class="form_input"
+                id="input_1"
+                #inp3
+                [min]="0"
+                [max]="9"
+                (keyup)="onInputChange($event, inp3, inp2, inp4)"
+                (keypress)="($event.charCode >= 48 && $event.charCode < 58 )"
+              />
+              <input
+                type="number"
+                class="form_input"
+                id="input_1"
+                #inp4
+                [min]="0"
+                [max]="9"
+                (keyup)="onInputChange($event, inp4, inp3,inp5)"
+                (keypress)="($event.charCode >= 48 && $event.charCode < 58 )"
+              />
+              <input
+                type="number"
+                class="form_input"
+                id="input_1"
+                #inp5
+                [min]="0"
+                [max]="9"
+                (keyup)="onInputChange($event, inp5, inp4)"
+                (keypress)="($event.charCode >= 48 && $event.charCode < 58 )"
+              />
+            </div>
+            <button type="submit" class="submit mt-5" (click)="submitOTP()">
+              SUBMIT
+            </button>
+          </form>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+
+<ion-modal id="verified-modal" #modal trigger="open-custom-dialog">
+  <ng-template>
+    <div class="wrapper h-100 d-flex ion-align-items-center">
+      <ion-grid>
+        <ion-row class="ion-justify-content-center ion-align-items-center">
+          <ion-col size="10">
+            <h1 class="model_header">Registered Successfully!</h1>
+            <p class="model_content">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+            </p>
+            <button class="logIn_submit ion-margin-top" (click)="logIn()">
+              LOG IN
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ng-template>
+</ion-modal>

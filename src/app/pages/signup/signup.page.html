@@ -1,0 +1,102 @@
+<ion-content class="signUp">
+  <div class="signUp-grid">
+    <ion-grid>
+      <ion-row class="ion-justify-content-center ion-align-items-center">
+        <ion-col size="4" sizeSm="3" sizeMd="2" sizeLg="1">
+          <div class="avatar"></div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="8">
+          <h1 class="signUp_header ion-text-center mt-2">Sign Up</h1>
+          <p class="signUp_subHeader ion-text-center">
+            Create Profile & Move on
+          </p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-justify-content-center ion-margin-top signUp_form">
+        <ion-col size="10">
+          <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
+            <ion-item class="mb-2">
+              <ion-label class="form_label">
+                <img
+                  src="assets/images/login/mail-icon.png"
+                  alt=""
+                  class="form_icon"
+                />
+              </ion-label>
+              <ion-input
+                type="email"
+                formControlName="email"
+                placeholder="Email Address"
+                class="form_input"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item class="ion-margin-bottom">
+              <ion-label class="form_label">
+                <img
+                  src="assets/images/login/password-icon.png"
+                  alt=""
+                  class="form_icon"
+                />
+              </ion-label>
+              <ion-input
+                type="password"
+                formControlName="password"
+                placeholder="Create Password"
+                class="form_input"
+              ></ion-input>
+            </ion-item>
+
+            <button type="submit" class="signUp_submit ion-margin-top">
+              SIGN UP
+            </button>
+            <p class="ion-text-center form_signUp_width my-3">
+              Or Sign Up with
+            </p>
+          </form>
+        </ion-col>
+        <ion-col size="5">
+          <button type="submit" class="signUp_facebook">
+            <img
+              src="assets/images/login/fb-icon.png"
+              alt="Facebook Login"
+              class="social-icon"
+            />
+            <span class="ml-2">Facebook</span>
+          </button>
+        </ion-col>
+        <ion-col size="5">
+          <button type="submit" class="signUp_google">
+            <img
+              src="assets/images/login/google-icon.png"
+              alt="Facebook Login"
+              class="social-icon"
+            />
+            <span class="ml-2">Google</span>
+          </button>
+        </ion-col>
+
+        <ion-col size="11">
+          <p class="ion-text-center signUp_agree ion-margin-top">
+            By proceeding, I agree to AirTasker's
+            <span>
+              Terms & Conditions, Community Guidelines, & Privacy Policy
+            </span>
+          </p>
+        </ion-col>
+      </ion-row>
+
+      <p class="ion-text-center signUp_login ion-margin-top">
+        Don't have an account?
+        <a
+          [routerLink]="['/login']"
+          routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{exact:true}"
+          >SIGN IN</a
+        >
+      </p>
+    </ion-grid>
+  </div>
+</ion-content>

@@ -1,0 +1,97 @@
+:host {
+  height: 100vh;
+}
+.verify {
+  .verify-grid {
+    margin-top: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .avatar {
+    background: var(--green);
+    background-image: url("../../../assets/images/login/Logo-aussie-tasker.png");
+    background-size: contain;
+    width: 90%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    margin: 0% 5%;
+  }
+
+  .login_header {
+    font-size: 24px;
+    font-weight: 900;
+    font-family: "Poppins-bold";
+    margin-top: 5%;
+  }
+
+  .login_subHeader {
+    font-size: 14px;
+    margin: 0;
+    color: var(--grey);
+  }
+
+  .form_input {
+    width: 14%;
+    aspect-ratio: 3/4;
+    font-size: 30px;
+    text-align: center;
+    margin: 2%;
+    border: none;
+    border-bottom: 1px solid var(--green);
+    color: var(--green);
+
+    &:focus {
+      outline: none;
+      border-radius: 5px;
+      border: 1px solid var(--green);
+    }
+  }
+
+  .submit {
+    width: 100%;
+    padding: 15px 0;
+    background: #000;
+    color: #fff;
+    border-radius: 15px;
+    letter-spacing: 5px;
+  }
+}
+
+.native-input::-webkit-outer-spin-button,
+.native-input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+.native-input[type="number"] {
+  -moz-appearance: textfield !important;
+}
+
+ion-modal#verified-modal {
+  --width: 75vw !important;
+  --height: 25rem;
+  --border-radius: 20px;
+}
+
+.logIn_submit {
+  width: 100%;
+  padding: 15px 0;
+  align-items: center;
+  background: #000;
+  color: #fff;
+  border-radius: 15px;
+}
+
+.model_header {
+  font-family: "Poppins-bold";
+  font-size: 20px;
+  text-align: center;
+  color: #000;
+}
+
+.model_content {
+  text-align: center;
+  font-size: 12px;
+  color: var(--grey);
+}
