@@ -8,6 +8,7 @@ import { PagesPageRoutingModule } from './pages-routing.module';
 
 import { PagesPage } from './pages.page';
 import { TabsPage } from '../tabs/tabs.page';
+import { HomeComponent } from '../components/home/home.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,7 @@ import { TabsPage } from '../tabs/tabs.page';
     PagesPageRoutingModule,
     ReactiveFormsModule,
   ],
-  declarations: [PagesPage, TabsPage],
+  declarations: [PagesPage, TabsPage, HomeComponent],
   bootstrap: [PagesPage],
 })
 export class PagesPageModule {}

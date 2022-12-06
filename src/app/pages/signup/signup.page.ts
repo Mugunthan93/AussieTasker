@@ -23,7 +23,7 @@ import { LoadingController } from '@ionic/angular';
 })
 export class SignupPage implements OnInit, OnDestroy {
   signUpForm: FormGroup;
-  @Select(UserDataState.getUserData) userData!: Observable<UserData[]>;
+  @Select(UserDataState.getUserData) userData$!: Observable<UserData[]>;
 
   constructor(
     private fb: FormBuilder,
@@ -60,19 +60,19 @@ export class SignupPage implements OnInit, OnDestroy {
       await this.common.onCreateUser(obj).subscribe({
         next: (res: any) => {
           if (res.statusCode == 200) {
-            let data: UserData = {
-              _id: res.data._id,
-              userId: res.data.userId,
-              emailId: res.data.emailId,
-              status: res.data.status,
-              isEmailVerified: res.data.isEmailVerified,
-              token: res.data.token,
-              previousPassword: res.data.previousPassword,
-            };
-            this.store.dispatch(new SetUserData(data)).subscribe(() => {
-              this.clearForm();
-              this.router.navigate(['/verify']);
+            let data: any = {};
+
+            Object.keys(res.data).forEach((key: any) => {
+              if (key !== 'password') {
+                data[key] = res.data[key];
+              }
             });
+            this.store.dispatch(new SetUserData(res.data)).subscribe(() => {
+              this.clearForm();
+              this.sendOTP(res.data.emailId);
+            });
+          } else {
+            this.presentToast(res.message);
           }
           this.common.setLoading(false);
         },
@@ -110,6 +110,24 @@ export class SignupPage implements OnInit, OnDestroy {
 
   clearForm() {
     this.signUpForm.reset();
+  }
+
+  sendOTP(email: any) {
+    this.common.setLoading(true);
+    let req = {
+      type: 'Account Creation',
+      emailId: email,
+    };
+
+    this.common.onSendOTP(req).subscribe((res: any) => {
+      this.router.navigate(['/verify']);
+      if (res.statusCode == 200) {
+        this.router.navigate(['/verify']);
+      } else {
+        this.presentToast(res.message);
+      }
+      this.common.setLoading(false);
+    });
   }
 
   async ngOnDestroy() {

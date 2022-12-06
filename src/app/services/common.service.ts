@@ -36,12 +36,18 @@ export class CommonService implements OnInit {
     return this.http.post(environment.BASE_URL + 'createUser', req);
   }
 
+  onSendOTP(req: any) {
+    return this.http.post(environment.BASE_URL + 'sendOtp', req);
+  }
+  onVerifyOtp(req: any) {
+    return this.http.post(environment.BASE_URL + 'verifyOtp', req);
+  }
+
   async setLoading(isLoading: boolean) {
     this.store.dispatch(new SetLoading(isLoading)).subscribe(() => {});
 
     this.store.dispatch(new GetLoading());
     this.isLoading.subscribe((res) => {
-      console.log(res);
       this.onLoad(res);
     });
   }

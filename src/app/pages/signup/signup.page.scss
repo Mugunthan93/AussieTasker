@@ -120,12 +120,13 @@
 }
 
 ion-toast.custom-toast {
-  --background: var(--green);
-  --box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2);
+  --background: #fff;
+  --box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.252);
+  --border-radious: 8px;
   .toast-wrapper {
-    --color: #fff;
-    background: var(--green) !important;
-    color: #fff !important;
+    --color: var(--green);
+    background: #fff !important;
+    color: var(--green) !important;
     box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2) !important;
   }
 
@@ -138,11 +139,19 @@ ion-toast.custom-toast {
 ion-toast.custom-toast::part(message) {
   --font-family: var(--font-reg);
   --white-space: break-spaces;
-  --color: #fff;
-  color: #fff !important;
+  // --color: #fff;
+  color: var(--green) !important;
 }
 
 ion-toast.custom-toast::part(button) {
-  --color: #fff;
-  color: #fff !important;
+  // --color: #fff;
+  color: var(--green) !important;
+}
+
+:host(.item-fill-none.item-interactive.ion-touched.ion-invalid) .item-native {
+  border-bottom-color: #ff0000 !important;
+}
+
+:host(.item-fill-none.item-interactive.ion-touched.ion-valid) .item-native {
+  border-bottom-color: var(--green) !important;
 }

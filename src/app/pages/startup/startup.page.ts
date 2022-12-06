@@ -10,6 +10,10 @@ import { SwiperComponent } from 'swiper/angular';
 import SwiperCore, { Pagination } from 'swiper';
 import { HomeComponent } from 'src/app/components/home/home.component';
 import { Router } from '@angular/router';
+import { Select } from '@ngxs/store';
+import { UserDataState } from 'src/app/state/user.state';
+import { Observable } from 'rxjs';
+import { UserData } from 'src/app/Models/userData';
 
 SwiperCore.use([Pagination]);
 
@@ -20,11 +24,20 @@ SwiperCore.use([Pagination]);
   encapsulation: ViewEncapsulation.None,
 })
 export class StartupPage implements OnInit, AfterContentInit {
-  @ViewChild('swiper', { static: false }) swiper?: SwiperComponent;
+  @Select(UserDataState.getUserData) getUserData$!: Observable<UserData>;
+  @ViewChild('swiper', { static: false })
+  swiper?: SwiperComponent;
   component = HomeComponent;
   slideIndex: number = 0;
+  userData!: UserData;
 
-  constructor(private router: Router, private cdref: ChangeDetectorRef) {}
+  constructor(private router: Router, private cdref: ChangeDetectorRef) {
+    this.getUserData$.subscribe((res: any) => {
+      if (res.length > 0 && this.router.url == '/startup') {
+        // this.router.navigate(['/home']);
+      }
+    });
+  }
 
   ngOnInit() {
     this.slideIndex = 0;

@@ -57,21 +57,11 @@ const routes: Routes = [
             (m) => m.VerifyOTPPageModule
           ),
       },
-      {
-        path: '',
-        redirectTo: '/home',
-        pathMatch: 'full',
-      },
     ],
   },
   {
-    path: '',
-    redirectTo: '/home',
-    pathMatch: 'full',
-  },
-  {
     path: '**',
-    redirectTo: 'home',
+    redirectTo: '/login',
     pathMatch: 'full',
   },
   {
