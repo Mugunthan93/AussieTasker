@@ -33,12 +33,17 @@
 
   .signUp_form {
     .form_label {
-      width: 8%;
+      width: 24px;
       margin-right: 2%;
+      margin-bottom: 0 !important;
     }
 
     .form_input {
       font-size: 12px !important;
+
+      .native-input {
+        padding-bottom: 0 !important;
+      }
     }
 
     .form_icon {
@@ -53,14 +58,6 @@
         color: var(--green);
         font-size: 14px;
       }
-    }
-
-    .signUp_submit {
-      width: 100%;
-      padding: 15px 0;
-      background: #000;
-      color: #fff;
-      border-radius: 15px;
     }
 
     .form_signUp_width {
@@ -78,7 +75,7 @@
       display: inline-flex;
       align-items: center;
       font-weight: 900;
-      justify-content: space-around;
+      justify-content: space-evenly;
       font-size: 14px;
 
       ion-icon {
@@ -117,35 +114,6 @@
       font-family: var(--font-bold);
     }
   }
-}
-
-ion-toast.custom-toast {
-  --background: #fff;
-  --box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.252);
-  --border-radious: 8px;
-  .toast-wrapper {
-    --color: var(--green);
-    background: #fff !important;
-    color: var(--green) !important;
-    box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2) !important;
-  }
-
-  .toast-message {
-    white-space: break-spaces !important;
-    font-family: var(--font-reg) !important;
-  }
-}
-
-ion-toast.custom-toast::part(message) {
-  --font-family: var(--font-reg);
-  --white-space: break-spaces;
-  // --color: #fff;
-  color: var(--green) !important;
-}
-
-ion-toast.custom-toast::part(button) {
-  // --color: #fff;
-  color: var(--green) !important;
 }
 
 :host(.item-fill-none.item-interactive.ion-touched.ion-invalid) .item-native {

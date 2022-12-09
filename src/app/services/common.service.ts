@@ -1,66 +1,62 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { GetLoading, SetLoading } from '../actions/loader.action';
-import { LoaderState } from '../state/loader.state';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CommonService implements OnInit {
   loading: any;
-  @Select(LoaderState.getLoader) isLoading!: Observable<boolean>;
 
   constructor(
     private http: HttpClient,
     private loadingControl: LoadingController,
-    private store: Store
-  ) {
-    this.store.dispatch(new GetLoading());
-    this.isLoading.subscribe((res) => {
-      console.log(res);
-    });
-  }
+    private store: Store,
+    private toastController: ToastController
+  ) {}
 
-  ngOnInit(): void {
-    this.store.dispatch(new SetLoading(false));
-    this.isLoading.subscribe((res) => {
-      console.log(res);
-    });
-  }
-
-  onCreateUser(req: any) {
-    return this.http.post(environment.BASE_URL + 'createUser', req);
-  }
-
-  onSendOTP(req: any) {
-    return this.http.post(environment.BASE_URL + 'sendOtp', req);
-  }
-  onVerifyOtp(req: any) {
-    return this.http.post(environment.BASE_URL + 'verifyOtp', req);
-  }
+  ngOnInit(): void {}
 
   async setLoading(isLoading: boolean) {
-    this.store.dispatch(new SetLoading(isLoading)).subscribe(() => {});
-
-    this.store.dispatch(new GetLoading());
-    this.isLoading.subscribe((res) => {
-      this.onLoad(res);
-    });
-  }
-
-  async onLoad(flag: boolean) {
-    if (flag) {
+    if (isLoading) {
       const load = await this.loadingControl.create({
         message: 'Please Wait...',
         cssClass: 'custom-loading',
       });
       load.present();
     } else {
-      this.loadingControl.dismiss();
+      this.loadingControl.getTop().then((data) => {
+        if (data) {
+          this.loadingControl.dismiss();
+        }
+      });
     }
+  }
+
+  async openToast(req: any) {
+    const toast = await this.toastController.create({
+      message: req.msg,
+      duration: 10000,
+      cssClass: req.type == 'success' ? 'success-toast' : 'danger-toast',
+      buttons: [
+        {
+          icon: req.type == 'success' ? 'close-circle' : 'checkmark-circle',
+          role: 'cancel',
+          side: 'end',
+          cssClass: 'toast-icon',
+        },
+      ],
+    });
+    await toast.present();
+  }
+
+  async closeToast() {
+    await this.toastController.getTop().then((data) => {
+      if (data) {
+        this.toastController.dismiss();
+      }
+    });
   }
 }

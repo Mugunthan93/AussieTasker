@@ -33,12 +33,17 @@
 
   .login_form {
     .form_label {
-      width: 8%;
+      width: 24px;
       margin-right: 2%;
+      margin-bottom: 0 !important;
     }
 
     .form_input {
       font-size: 12px !important;
+
+      .native-input {
+        padding-bottom: 0 !important;
+      }
     }
 
     .form_icon {
@@ -56,14 +61,6 @@
       }
     }
 
-    .login_submit {
-      width: 100%;
-      padding: 15px 0;
-      background: #000;
-      color: #fff;
-      border-radius: 15px;
-    }
-
     .form_login_width {
       font-size: 12px;
       color: var(--grey);
@@ -74,12 +71,12 @@
       background: #fff;
       border-radius: 12px;
       box-shadow: 0px 0px 7px 0px #8d8d8d6e;
-      padding: 6% 10%;
+      padding: 10px;
       width: 97%;
       display: inline-flex;
       align-items: center;
       font-weight: 900;
-      justify-content: space-around;
+      justify-content: space-evenly;
       font-size: 14px;
 
       ion-icon {
@@ -88,7 +85,7 @@
     }
 
     .social-icon {
-      width: 20%;
+      width: 20px;
     }
 
     .login_facebook {

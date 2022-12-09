@@ -1,8 +1,8 @@
-<ion-content class="login">
+<ion-content class="login" [fullscreen]="true">
   <ion-grid class="h-100">
     <ion-row class="h-100">
-      <ion-col sizeLg="6" sizeMd="0">
-        <div class="left-banner">
+      <ion-col sizeLg="6" sizeMd="0" class="left-banner">
+        <div>
           <h1>Welcome</h1>
           <h3>Aussie Tasker App</h3>
         </div>
@@ -11,7 +11,7 @@
         <div class="login-grid">
           <ion-grid>
             <ion-row class="ion-justify-content-center ion-align-items-center">
-              <ion-col size="4" sizeSm="3" sizeMd="2" sizeLg="3" size="4">
+              <ion-col size="4" sizeSm="3" sizeMd="2" sizeLg="3">
                 <div class="avatar"></div>
               </ion-col>
             </ion-row>
@@ -38,7 +38,7 @@
                     </ion-label>
                     <ion-input
                       type="email"
-                      formControlName="email"
+                      formControlName="emailId"
                       placeholder="Email Address"
                       class="form_input"
                     ></ion-input>
@@ -60,10 +60,10 @@
                     ></ion-input>
                   </ion-item>
                   <p class="ion-text-end form_forgot">
-                    <a>Forgot password?</a>
+                    <a (click)="forgotPass()">Forgot password?</a>
                   </p>
 
-                  <button type="submit" class="login_submit ion-margin-top">
+                  <button type="submit" class="btn-black ion-margin-top">
                     LOG IN
                   </button>
                   <p class="ion-text-center form_login_width mt-2">

@@ -57,6 +57,20 @@ const routes: Routes = [
             (m) => m.VerifyOTPPageModule
           ),
       },
+      {
+        path: 'changePassword',
+        loadChildren: () =>
+          import('../pages/change-password/change-password.module').then(
+            (m) => m.ChangePasswordPageModule
+          ),
+      },
+      {
+        path: 'userDetails',
+        loadChildren: () =>
+          import('../pages/user-details/user-details.module').then(
+            (m) => m.UserDetailsPageModule
+          ),
+      },
     ],
   },
   {
@@ -85,6 +99,17 @@ const routes: Routes = [
       import('./verify-otp/verify-otp.module').then(
         (m) => m.VerifyOTPPageModule
       ),
+  },
+  {
+    path: 'change-password',
+    loadChildren: () =>
+      import('./change-password/change-password.module').then(
+        (m) => m.ChangePasswordPageModule
+      ),
+  },
+  {
+    path: 'user-details',
+    loadChildren: () => import('./user-details/user-details.module').then( m => m.UserDetailsPageModule)
   },
 ];
 

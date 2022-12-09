@@ -1,16 +1,16 @@
-<ion-content style="height: 100vh">
+<ion-content style="height: 100vh" [fullscreen]="true">
   <div class="startup">
     <ion-grid class="h-100">
       <ion-row class="h-100">
-        <ion-col sizeLg="6" sizeMd="0">
-          <div class="left-banner">
+        <ion-col sizeLg="6" sizeMd="0" class="left-banner">
+          <div>
             <h1>Welcome</h1>
             <h3>Aussie Tasker App</h3>
           </div>
         </ion-col>
         <ion-col sizeLg="6" sizeMd="12">
           <ion-row class="ion-justify-content-end">
-            <p class="skip ion-margin-end my-2" routerLink="/signup">Skip</p>
+            <p class="skip ion-margin-end m-0" routerLink="/signup">Skip</p>
           </ion-row>
           <swiper
             #swiper
@@ -64,7 +64,7 @@
         </ion-col>
       </ion-row>
 
-      <ion-row class="ion-justify-content-end">
+      <div class="d-flex justify-content-end">
         <button
           class="next-item ion-margin-end"
           (click)="slideNext()"
@@ -79,7 +79,7 @@
         >
           <ion-icon name="checkmark-outline"></ion-icon>
         </button>
-      </ion-row>
+      </div>
     </ion-grid>
   </div>
 </ion-content>

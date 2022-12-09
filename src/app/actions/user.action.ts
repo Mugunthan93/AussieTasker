@@ -17,3 +17,12 @@ export class SetUserData {
 export class GetUserData {
   static readonly type = '[UserData] Get';
 }
+
+export class SetPasswordType {
+  static readonly type = '[PassType] Add';
+  constructor(public payload: 'Account Creation' | 'Forgot Password') {}
+}
+
+export class GetPasswordType {
+  static readonly type = '[PassType] Get';
+}

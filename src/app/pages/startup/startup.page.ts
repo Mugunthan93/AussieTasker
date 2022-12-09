@@ -33,7 +33,7 @@ export class StartupPage implements OnInit, AfterContentInit {
 
   constructor(private router: Router, private cdref: ChangeDetectorRef) {
     this.getUserData$.subscribe((res: any) => {
-      if (res.length > 0 && this.router.url == '/startup') {
+      if (res && res.length > 0 && this.router.url == '/startup') {
         // this.router.navigate(['/home']);
       }
     });
@@ -48,7 +48,7 @@ export class StartupPage implements OnInit, AfterContentInit {
   }
 
   slideNext() {
-    this.swiper?.swiperRef.slideNext(100);
+    this.swiper?.swiperRef.slideNext(500);
     this.slideIndex = this.swiper?.swiperRef.activeIndex || 0;
     this.cdref.detectChanges();
   }

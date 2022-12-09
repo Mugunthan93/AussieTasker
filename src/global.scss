@@ -65,3 +65,94 @@ body {
 .font-semi {
   font-family: "Poppins-semibold";
 }
+
+.btn-black {
+  width: 100%;
+  padding: 8px 0;
+  background: #000;
+  color: #fff;
+  border-radius: 15px;
+  letter-spacing: 5px;
+}
+
+ion-toast.success-toast {
+  --background: #000;
+  --box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.252);
+  --border-radious: 8px;
+  .toast-wrapper {
+    --color: var(--ion-color-success);
+    background: #000 !important;
+    color: var(--ion-color-success) !important;
+    box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .toast-message {
+    white-space: break-spaces !important;
+    font-family: var(--font-semi) !important;
+  }
+}
+
+ion-toast.success-toast::part(message) {
+  --font-family: var(--font-semi);
+  --white-space: break-spaces;
+  color: var(--ion-color-success) !important;
+}
+
+ion-toast.success-toast::part(button) {
+  color: var(--ion-color-success) !important;
+}
+
+ion-toast.danger-toast {
+  --background: #000;
+  --box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.252);
+  --border-radious: 8px;
+  .toast-wrapper {
+    --color: var(--ion-color-danger);
+    background: #000 !important;
+    color: var(--ion-color-danger) !important;
+    box-shadow: 3px 3px 10px 0 rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .toast-message {
+    white-space: break-spaces !important;
+    font-family: var(--font-semi) !important;
+  }
+}
+
+ion-toast.danger-toast::part(message) {
+  --font-family: var(--font-semi);
+  --white-space: break-spaces;
+  color: var(--ion-color-danger) !important;
+}
+
+ion-toast.danger-toast::part(button) {
+  // --color: #fff;
+  color: var(--ion-color-danger) !important;
+}
+
+::-webkit-inner-spin-button,
+::-webkit-outer-spin-button {
+  display: none;
+}
+
+.left-banner {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  height: 100%;
+  background: #d3ffe8;
+  flex-direction: column;
+  div{
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .left-banner {
+    display: none !important;
+    div{
+      display: none;
+    }
+  }
+}

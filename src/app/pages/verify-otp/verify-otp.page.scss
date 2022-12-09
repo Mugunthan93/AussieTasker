@@ -48,19 +48,16 @@
       border: 1px solid var(--green);
     }
   }
-
-  .submit {
-    width: 100%;
-    padding: 15px 0;
-    background: #000;
-    color: #fff;
-    border-radius: 15px;
-    letter-spacing: 5px;
-  }
 }
 
 .native-input::-webkit-outer-spin-button,
 .native-input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+::-webkit-outer-spin-button,
+::-webkit-inner-spin-button {
   -webkit-appearance: none !important;
   margin: 0 !important;
 }
@@ -70,17 +67,8 @@
 
 ion-modal#verified-modal {
   --width: 75vw !important;
-  --height: 30rem;
+  --height: 25rem;
   --border-radius: 20px;
-}
-
-.logIn_submit {
-  width: 100%;
-  padding: 15px 0;
-  align-items: center;
-  background: #000;
-  color: #fff;
-  border-radius: 15px;
 }
 
 .model_header {

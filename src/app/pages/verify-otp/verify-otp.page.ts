@@ -9,10 +9,12 @@ import {
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IonModal, ToastController } from '@ionic/angular';
-import { Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { UserData } from 'src/app/Models/userData';
+import { ApiService } from 'src/app/services/api.service';
 import { CommonService } from 'src/app/services/common.service';
+import { PasswordState } from 'src/app/state/passwordType.state';
 import { UserDataState } from 'src/app/state/user.state';
 
 @Component({
@@ -23,14 +25,20 @@ import { UserDataState } from 'src/app/state/user.state';
 })
 export class VerifyOTPPage implements OnInit, OnDestroy {
   @Select(UserDataState.getUserData) getUserData$!: Observable<UserData>;
+  @Select(PasswordState.getPasswordType) passType$!: Observable<string>;
+
   @ViewChild(IonModal) modal?: IonModal;
   userData!: UserData;
   otpValue: string = '';
+  otpForm!: FormGroup;
+  passType: string = '';
 
   constructor(
     private router: Router,
     private common: CommonService,
-    private toastController: ToastController
+    private apiSevice: ApiService,
+    private store: Store,
+    private fb: FormBuilder
   ) {
     router.events.forEach((event) => {
       if (event) {
@@ -42,49 +50,80 @@ export class VerifyOTPPage implements OnInit, OnDestroy {
     this.getUserData$.subscribe((res: any) => {
       this.userData = res[0];
     });
+
+    this.passType$.subscribe((res: any) => {
+      console.log(res);
+      this.passType = res;
+    });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.otpForm = this.fb.group({
+      input_1: new FormControl(''),
+      input_2: new FormControl(''),
+      input_3: new FormControl(''),
+      input_4: new FormControl(''),
+      input_5: new FormControl(''),
+      input_6: new FormControl(''),
+    });
+  }
 
   async onInputChange(e: any, ele: HTMLInputElement, prev?: any, nxt?: any) {
     if (prev && e.key == 'Backspace') {
       ele.value = '';
       prev.focus();
-      return;
-    } else if (!Number(ele.value.trim())) {
+      // return;
+    } else if (ele.value != '0' && !Number(ele.value.trim())) {
       ele.value = ' ';
-      return;
+      // return;
     } else {
       if (ele.value.length > 1) {
-        ele.value = ele.value.substring(ele.value.length - 1);
+        ele.value = e.key;
       }
-      this.otpValue = this.otpValue + '' + ele.value;
       if (nxt) {
         nxt.focus();
       } else {
-        return;
+        // return;
       }
     }
+    this.otpForm.get(ele.id)?.patchValue(ele.value);
   }
 
   async submitOTP() {
-    console.log(this.otpValue);
+    this.otpValue = '';
+    Object.values(this.otpForm.value).forEach((val) => {
+      this.otpValue = this.otpValue + val;
+    });
+
     if (this.otpValue) {
       let req = {
-        type: 'Account Creation',
-        emailId: this.userData.emailId,
+        type: this.passType,
+        emailId: sessionStorage.getItem('emailId'),
         otp: Number(this.otpValue),
       };
-      this.common.onLoad(true);
-      await this.common.onVerifyOtp(req).subscribe((res: any) => {
-        if (res.statusCode == 200) {
-          this.modal?.present();
-        }
-        this.modal?.present();
-        this.common.onLoad(false);
+      this.common.setLoading(true);
+
+      await this.apiSevice.onVerifyOtp(req).subscribe({
+        next: (res: any) => {
+          this.common.setLoading(false);
+          this.otpForm.reset();
+          if (res.statusCode == 200) {
+            if (this.passType == 'Account Creation') {
+              this.modal?.present();
+            } else {
+              this.router.navigate(['/changePassword']);
+            }
+          } else {
+            this.common.openToast({ msg: res.message, type: 'error' });
+          }
+        },
+        error: (err) => {
+          alert(JSON.stringify(err))
+          this.common.setLoading(false);
+        },
       });
     } else {
-      this.presentToast('Please Enter Valid OTP');
+      this.common.openToast({ msg: 'Please Enter Valid OTP', type: 'error' });
     }
   }
 
@@ -95,23 +134,7 @@ export class VerifyOTPPage implements OnInit, OnDestroy {
     }, 1500);
   }
 
-  async presentToast(msg: string) {
-    const toast = await this.toastController.create({
-      message: msg,
-      duration: 10000,
-      cssClass: 'custom-toast',
-      buttons: [
-        {
-          text: 'Dismiss',
-          role: 'cancel',
-        },
-      ],
-    });
-
-    await toast.present();
-  }
-
   async ngOnDestroy() {
-    await this.toastController.dismiss();
+    // await this.toastController.dismiss();
   }
 }

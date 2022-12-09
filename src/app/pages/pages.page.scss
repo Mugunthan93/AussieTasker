@@ -2,3 +2,34 @@
   height: 90vh;
   margin: auto 0;
 }
+
+.black-bg {
+  background : #000;
+  height     : 100vh;
+  display    : flex;
+  flex-direction: column;
+    justify-content: flex-end;
+
+
+  .white-overlay {
+    width                  : 100vw;
+    height                 : 80vh;
+    background             : white;
+    border-top-left-radius : 50px;
+    border-top-right-radius: 50px;
+  }
+
+  .header{
+    padding: 5vw 10vw;
+    h1{
+      color: white;
+      font-size: 24px;
+      font-family: var(--font-bold);
+    }
+
+    p{
+      color: #767676;
+      font-size: 12px;
+    }
+  }
+}

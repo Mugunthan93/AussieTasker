@@ -2,13 +2,13 @@
 
 .startup {
   height: 100vh;
-  // margin-top: 1.5vh;
   overflow: hidden;
 
   .skip {
     font-size: 12px;
     background: transparent;
     text-decoration: none;
+    text-align: end;
     cursor: pointer;
     color: var(--grey);
     font-family: "Poppins-semibold";
@@ -77,25 +77,41 @@
     margin: 2px !important;
   }
 
-  .left-banner {
-    display: block;
+
+}
+
+// @media only screen and (max-width: 992px) {
+//   .left-banner {
+//     display: none !important;
+//   }
+// }
+
+// @media only screen and (min-width: 992px) {
+//   .left-banner {
+//     display: flex !important;
+//     align-items: center;
+//     justify-content: center;
+//     align-content: center;
+//     height: 100%;
+//     background: #d3ffe8;
+//     flex-direction: column;
+//   }
+// }
+
+@media only screen and (max-height: 680px) {
+  .next-item {
+    bottom: 5% !important;
   }
 }
 
-@media only screen and (max-width: 992px) {
-  .left-banner {
-    display: none !important;
+@media only screen and (max-height: 850px) {
+  .next-item {
+    bottom: 6% !important;
   }
 }
 
-@media only screen and (min-width: 992px) {
-  .left-banner {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-    height: 100%;
-    background: #d3ffe8;
-    flex-direction: column;
+@media only screen and (min-height: 850px) {
+  .next-item {
+    bottom: 7% !important;
   }
 }
