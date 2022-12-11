@@ -116,9 +116,12 @@ export class VerifyOTPPage implements OnInit, OnDestroy {
           } else {
             this.common.openToast({ msg: res.message, type: 'error' });
           }
+          setTimeout(() => {
+            this.common.setLoading(false);
+          }, 2000);
         },
         error: (err) => {
-          alert(JSON.stringify(err))
+          alert(JSON.stringify(err));
           this.common.setLoading(false);
         },
       });
@@ -130,7 +133,7 @@ export class VerifyOTPPage implements OnInit, OnDestroy {
   async logIn() {
     await this.modal?.dismiss();
     setTimeout(() => {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/userDetails']);
     }, 1500);
   }
 

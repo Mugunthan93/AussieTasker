@@ -1,0 +1,88 @@
+<div class="side-menu">
+  <ion-menu side="start" contentId="main-content">
+    <ion-content class="ion-padding">
+      <ion-menu-toggle>
+        <ion-button fill="clear" class="menu-back">
+          <img src="../../../assets/images/back.png" alt="" />
+        </ion-button>
+      </ion-menu-toggle>
+      <div class="menu-content px-4 mt-4">
+        <div>
+          <h3 class="menu-header">Settings</h3>
+        <p class="menu-subHeader">Keep everything on track</p>
+        <ion-list [inset]="true" class="m-0 mt-2">
+          <ion-item lines="full" button detail="true" class="mb-2">
+            <ion-thumbnail slot="start">
+              <img
+                alt="Silhouette of a person's head"
+                src="../../../assets/images/account.png"
+              />
+            </ion-thumbnail>
+            <ion-label> Account </ion-label>
+          </ion-item>
+
+          <ion-item lines="full" button detail="true" class="mb-2">
+            <ion-thumbnail slot="start">
+              <ion-icon name="notifications-outline"></ion-icon>
+            </ion-thumbnail>
+            <ion-label> Notifications </ion-label>
+          </ion-item>
+
+          <ion-item lines="full" button detail="true" class="mb-2">
+            <ion-thumbnail slot="start">
+              <ion-icon name="card-outline"></ion-icon>
+            </ion-thumbnail>
+            <ion-label> Payment History </ion-label>
+          </ion-item>
+
+          <ion-item lines="full" button detail="true" class="mb-2">
+            <ion-thumbnail slot="start">
+              <img
+                alt="Silhouette of a person's head"
+                src="../../../assets/images/faq.png"
+              />
+            </ion-thumbnail>
+            <ion-label> FAQ </ion-label>
+          </ion-item>
+
+          <ion-item lines="full" button detail="true" class="mb-2">
+            <ion-thumbnail slot="start">
+              <img
+                alt="Silhouette of a person's head"
+                src="../../../assets/images/contact.png"
+              />
+            </ion-thumbnail>
+            <ion-label> Contact </ion-label>
+          </ion-item>
+
+          <ion-item lines="full" button detail="true" class="mb-2">
+            <ion-thumbnail slot="start">
+              <ion-icon name="share-social-outline"></ion-icon>
+            </ion-thumbnail>
+            <ion-label> Share </ion-label>
+          </ion-item>
+
+          <ion-item lines="full" button detail="true" class="mb-2">
+            <ion-thumbnail slot="start">
+              <img
+                alt="Silhouette of a person's head"
+                src="../../../assets/images/about.png"
+              />
+            </ion-thumbnail>
+            <ion-label> About</ion-label>
+          </ion-item>
+        </ion-list>
+        </div>
+
+        <div class=" d-flex align-items-center justify-content-between pb-4">
+          <ion-button fill="outline" shape="round" color="medium" class="logout">Log Out</ion-button>
+          <p class="version m-0">V 1.0.0</p>
+        </div>
+      </div>
+
+
+    </ion-content>
+  </ion-menu>
+</div>
+
+<ng-template #menu> </ng-template>

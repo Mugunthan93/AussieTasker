@@ -5,11 +5,18 @@ import { ActivatedRoute, Router } from '@angular/router';
   selector: 'app-pages',
   templateUrl: './pages.page.html',
   styleUrls: ['./pages.page.scss'],
-  encapsulation:ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class PagesPage implements OnInit {
   showTab: boolean = false;
-  urls: string[] = ['startup', 'signup', 'login', 'verify', 'changePassword', 'userDetails'];
+  urls: string[] = [
+    'startup',
+    'signup',
+    'login',
+    'verify',
+    'changePassword',
+    'userDetails',
+  ];
   constructor(private router: Router, private route: ActivatedRoute) {
     this.router.events.subscribe((e: any) => {
       if (e.url) {
@@ -25,7 +32,7 @@ export class PagesPage implements OnInit {
 
   ngOnInit() {
     if (localStorage.getItem('userData')) {
-      this.router.navigateByUrl('/userDetails');
+      this.router.navigateByUrl('/home');
     } else {
       this.router.navigateByUrl('/startup');
     }

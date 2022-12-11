@@ -1,0 +1,10 @@
+:host,
+ion-toolbar {
+    --background  : transparent !important;
+    --border-width: 0 !important;
+
+    ion-avatar {
+        width : 35px !important;
+        height: 35px !important;
+    }
+}

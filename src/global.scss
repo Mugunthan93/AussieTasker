@@ -148,6 +148,16 @@ ion-toast.danger-toast::part(button) {
   }
 }
 
+.avatar {
+  background: var(--green);
+  background-image: url("./assets/images/login/Logo-aussie-tasker.png");
+  background-size: contain;
+  width: 90%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  margin: 0% 5%;
+}
+
 @media only screen and (max-width: 992px) {
   .left-banner {
     display: none !important;

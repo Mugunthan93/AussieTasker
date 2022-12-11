@@ -18,7 +18,10 @@
         class="ion-justify-content-center ion-items-center ion-margin-top login_form"
       >
         <ion-col size="10">
-          <form autocomplete="off" [formGroup]="otpForm">
+          <form
+            autocomplete="off"
+            [formGroup]="otpForm"
+          >
             <div class="d-flex ion-justify-content-center">
               <input
                 type="number"
@@ -104,10 +107,12 @@
       <ion-grid>
         <ion-row class="ion-justify-content-center ion-align-items-center">
           <ion-col size="10">
-            <h1 class="model_header">Registered Successfully!</h1>
-            <p class="model_content">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            </p>
+            <ion-img
+              src="../../../assets/images/success.png"
+              class="w-100"
+            ></ion-img>
+            <h1 class="model_header">Verified Successfully!</h1>
+            <p class="model_content"></p>
             <button class="btn-black ion-margin-top" (click)="logIn()">
               GOT IT!
             </button>

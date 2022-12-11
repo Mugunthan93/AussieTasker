@@ -1,14 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CategoriesComponent } from '../components/categories/categories.component';
-import { HomeComponent } from '../components/home/home.component';
-import { ProfileComponent } from '../components/profile/profile.component';
-import { SearchComponent } from '../components/search/search.component';
-import { LoginPage } from './login/login.page';
 
 import { PagesPage } from './pages.page';
-import { SignupPage } from './signup/signup.page';
-import { StartupPage } from './startup/startup.page';
 
 const routes: Routes = [
   {
@@ -17,65 +10,36 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        component: HomeComponent,
-      },
-      {
-        path: 'category',
-        component: CategoriesComponent,
-      },
-      {
-        path: 'search',
-        component: SearchComponent,
-      },
-      {
-        path: 'profile',
-        component: ProfileComponent,
-      },
-      {
-        path: 'startup',
         loadChildren: () =>
-          import('../pages/startup/startup.module').then(
-            (m) => m.StartupPageModule
+          import('./home/home.module').then((m) => m.HomePageModule),
+      },
+      {
+        path: 'browse',
+        loadChildren: () =>
+          import('./browse/browse.module').then((m) => m.BrowsePageModule),
+      },
+      {
+        path: 'myTasks',
+        loadChildren: () =>
+          import('./my-tasks/my-tasks.module').then((m) => m.MyTasksPageModule),
+      },
+      {
+        path: 'messages',
+        loadChildren: () =>
+          import('./messages/messages.module').then(
+            (m) => m.MessagesPageModule
           ),
       },
       {
-        path: 'login',
-        loadChildren: () =>
-          import('../pages/login/login.module').then((m) => m.LoginPageModule),
-      },
-      {
-        path: 'signup',
-        loadChildren: () =>
-          import('../pages/signup/signup.module').then(
-            (m) => m.SignupPageModule
-          ),
-      },
-      {
-        path: 'verify',
-        loadChildren: () =>
-          import('../pages/verify-otp/verify-otp.module').then(
-            (m) => m.VerifyOTPPageModule
-          ),
-      },
-      {
-        path: 'changePassword',
-        loadChildren: () =>
-          import('../pages/change-password/change-password.module').then(
-            (m) => m.ChangePasswordPageModule
-          ),
-      },
-      {
-        path: 'userDetails',
-        loadChildren: () =>
-          import('../pages/user-details/user-details.module').then(
-            (m) => m.UserDetailsPageModule
-          ),
+        path: '**',
+        redirectTo: 'signup',
+        pathMatch: 'full',
       },
     ],
   },
   {
-    path: '**',
-    redirectTo: '/login',
+    path: '',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   {
@@ -94,22 +58,25 @@ const routes: Routes = [
       import('./signup/signup.module').then((m) => m.SignupPageModule),
   },
   {
-    path: 'verify-otp',
+    path: 'verify',
     loadChildren: () =>
       import('./verify-otp/verify-otp.module').then(
         (m) => m.VerifyOTPPageModule
       ),
   },
   {
-    path: 'change-password',
+    path: 'changePassword',
     loadChildren: () =>
       import('./change-password/change-password.module').then(
         (m) => m.ChangePasswordPageModule
       ),
   },
   {
-    path: 'user-details',
-    loadChildren: () => import('./user-details/user-details.module').then( m => m.UserDetailsPageModule)
+    path: 'userDetails',
+    loadChildren: () =>
+      import('./user-details/user-details.module').then(
+        (m) => m.UserDetailsPageModule
+      ),
   },
 ];
 

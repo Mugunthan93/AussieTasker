@@ -29,26 +29,44 @@
               formControlName="mobileNumber"
             ></ion-input>
           </ion-item>
-          <ion-item>
+          <!-- <ion-item>
             <ion-label position="floating">Country</ion-label>
-            <ion-select interface="action-sheet" formControlName="country">
+            <ion-select
+              interface="action-sheet"
+              (ionChange)="onchangeCountry($event)"
+            >
               <ion-select-option
                 *ngFor="let country of countryList"
-                [value]="country.name"
+                [value]="country"
                 >{{country.name}}</ion-select-option
               >
             </ion-select>
-          </ion-item>
-          <ion-item>
+          </ion-item> -->
+
+          <!-- <ion-item>
             <ion-label position="floating">Languages Known</ion-label>
             <ion-select [multiple]="true" formControlName="languageKnown">
-              <ion-select-option *ngFor="let lang of languages" [value]="lang.name">{{lang.name}}</ion-select-option>
+              <ion-select-option
+                *ngFor="let lang of languages"
+                [value]="lang.name"
+                >{{lang.name}}</ion-select-option
+              >
             </ion-select>
           </ion-item>
+
           <ion-item>
             <ion-label position="floating">Skills</ion-label>
-            <ion-textarea  formControlName="skills"></ion-textarea>
+            <ion-textarea formControlName="skills"></ion-textarea>
           </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Working Experience</ion-label>
+            <ion-input
+              type="number"
+              placeholder="Enter Experience"
+              formControlName="workingExperience"
+            ></ion-input>
+          </ion-item> -->
 
           <button class="btn-black mt-5" type="submit">Submit</button>
         </ion-list>

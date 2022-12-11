@@ -8,7 +8,6 @@ import {
 } from '@angular/core';
 import { SwiperComponent } from 'swiper/angular';
 import SwiperCore, { Pagination } from 'swiper';
-import { HomeComponent } from 'src/app/components/home/home.component';
 import { Router } from '@angular/router';
 import { Select } from '@ngxs/store';
 import { UserDataState } from 'src/app/state/user.state';
@@ -27,7 +26,6 @@ export class StartupPage implements OnInit, AfterContentInit {
   @Select(UserDataState.getUserData) getUserData$!: Observable<UserData>;
   @ViewChild('swiper', { static: false })
   swiper?: SwiperComponent;
-  component = HomeComponent;
   slideIndex: number = 0;
   userData!: UserData;
 

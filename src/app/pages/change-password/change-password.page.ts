@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -18,6 +18,7 @@ import { UserDataState } from 'src/app/state/user.state';
   selector: 'app-change-password',
   templateUrl: './change-password.page.html',
   styleUrls: ['./change-password.page.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ChangePasswordPage implements OnInit {
   @Select(UserDataState.getUserData) userData$!: Observable<UserData[]>;
@@ -30,7 +31,7 @@ export class ChangePasswordPage implements OnInit {
     private fb: FormBuilder,
     private common: CommonService,
     private api: ApiService,
-    private router:Router
+    private router: Router
   ) {
     this.passwordForm = this.fb.group({
       password: new FormControl('', Validators.required),
@@ -52,9 +53,8 @@ export class ChangePasswordPage implements OnInit {
         this.passwordForm.get('password')?.value ==
         this.passwordForm.get('confirmPassword')?.value
       ) {
-
         let req = {
-          emailId:sessionStorage.getItem('emailId') || this.userData.emailId,
+          emailId: sessionStorage.getItem('emailId') || this.userData.emailId,
           password: this.passwordForm.get('password')?.value.trim(),
         };
         this.common.setLoading(true);
@@ -63,7 +63,7 @@ export class ChangePasswordPage implements OnInit {
             this.common.setLoading(false);
             if (res.statusCode == 200) {
               this.modal?.present();
-            }else {
+            } else {
               this.common.setLoading(false);
             }
           },

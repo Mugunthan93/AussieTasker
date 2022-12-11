@@ -8,7 +8,8 @@ import { PagesPageRoutingModule } from './pages-routing.module';
 
 import { PagesPage } from './pages.page';
 import { TabsPage } from '../tabs/tabs.page';
-import { HomeComponent } from '../components/home/home.component';
+import { HeaderComponent } from '../components/header/header.component';
+import { SideMenuComponent } from '../components/side-menu/side-menu.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,7 @@ import { HomeComponent } from '../components/home/home.component';
     PagesPageRoutingModule,
     ReactiveFormsModule,
   ],
-  declarations: [PagesPage, TabsPage, HomeComponent],
+  declarations: [PagesPage, TabsPage, HeaderComponent, SideMenuComponent],
   bootstrap: [PagesPage],
 })
 export class PagesPageModule {}
