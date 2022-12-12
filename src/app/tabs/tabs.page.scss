@@ -5,7 +5,7 @@
     border-top-left-radius : 20px;
     border-top-right-radius: 20px;
     height                 : 8vh;
-
+    display                : flex;
   }
 
   .tab-has-icon {
@@ -71,4 +71,23 @@
   border-radius   : 50%;
   background-image: url('../../assets/images/user.png');
   background-size : 100%;
+}
+
+ion-split-pane {
+  display: none;
+}
+
+.new-btn-row {
+  display: flex;
+}
+
+@media only screen and (min-width:992px) {
+  ion-split-pane {
+    display: block;
+  }
+
+  .new-btn-row,
+  .tab-bar {
+    display: none !important;
+  }
 }

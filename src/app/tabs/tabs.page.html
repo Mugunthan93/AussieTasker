@@ -47,12 +47,64 @@
   </ion-tab-bar>
 </ion-tabs>
 
-<div class="row justify-content-center">
+<div class="row justify-content-center new-btn-row">
   <button class="new-btn">
     <ion-icon name="add-circle-sharp" class="m-0"></ion-icon>
   </button>
 </div>
 
-
-
 <app-side-menu></app-side-menu>
+
+<!-- <ion-split-pane when="xs" contentId="main-content2">
+  <app-side-menu></app-side-menu>
+
+  <ion-tabs class="tabs" id="main-content2">
+    <ion-tab-bar slot="bottom" class="tab-bar">
+      <ion-tab-button
+        tab="home"
+        class="home"
+        routerDirection="back"
+        routerLinkActive="active"
+      >
+        <ion-icon name="home-outline" aria-details="non-selected"></ion-icon>
+        <ion-icon name="home-sharp" aria-details="selected"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button
+        tab="browse"
+        routerDirection="forward"
+        routerLinkActive="active"
+      >
+        <ion-icon name="search-outline" aria-details="non-selected"></ion-icon>
+        <ion-icon name="search-sharp" aria-details="selected"></ion-icon>
+      </ion-tab-button>
+
+      <button style="opacity: 0;"></button>
+
+      <ion-tab-button
+        tab="myTasks"
+        routerDirection="back"
+        routerLinkActive="active"
+      >
+        <ion-icon name="clipboard-outline" aria-details="non-selected"></ion-icon>
+        <ion-icon name="clipboard" aria-details="selected"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button
+        tab="messages"
+        routerDirection="back"
+        routerLinkActive="active"
+      >
+        <ion-icon
+          name="chatbubble-ellipses-outline"
+          aria-details="non-selected"
+        ></ion-icon>
+        <ion-icon
+          name="chatbubble-ellipses-sharp"
+          aria-details="selected"
+        ></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+
+</ion-split-pane> -->

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { ProfileComponent } from '../profile/profile.component';
 
 @Component({
   selector: 'app-header',
@@ -7,8 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalCtrl: ModalController) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
+
+  async openProfile() {
+    const modal = await this.modalCtrl.create({
+      component: ProfileComponent,
+    });
+    modal.present();
+
+    const { data, role } = await modal.onWillDismiss();
+
+    if (role === 'confirm') {
+
+    }
+  }
 
 }

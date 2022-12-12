@@ -1,4 +1,5 @@
-.side-menu {
+.side-menu,
+.split_pane {
     ion-menu {
         --width: 100vw !important;
     }
@@ -19,10 +20,10 @@
 
     }
 
-    .menu-content{
-        height: 90vh;
-        display: flex;
-        flex-direction: column;
+    .menu-content {
+        height         : 90vh;
+        display        : flex;
+        flex-direction : column;
         justify-content: space-between;
     }
 
@@ -44,11 +45,12 @@
         }
     }
 
-    .logout{
+    .logout {
         text-transform: none !important;
     }
-    .version{
-        color:#8E8E8E ;
+
+    .version {
+        color: #8E8E8E;
     }
 }
 
@@ -56,4 +58,38 @@ ion-menu,
 ion-toolbar {
     --background  : #fff !important;
     --border-width: 0 !important;
+}
+
+.split_pane {
+    display: none;
+}
+
+.side-menu {
+    display: block;
+}
+
+ion-menu-toggle {
+    display: block;
+}
+
+@media only screen and (min-width:992px) {
+    .split_pane {
+        display: block;
+        height : 100vh;
+        width  : 30vw;
+        border-right: 1px solid #707070;
+
+        ion-menu-toggle {
+            display: none;
+        }
+
+        .menu-content {
+            padding-right: 10px !important;
+            padding-left : 10px !important;
+        }
+    }
+
+    .side-menu {
+        display: none;
+    }
 }

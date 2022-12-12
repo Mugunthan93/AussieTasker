@@ -8,3 +8,15 @@ ion-toolbar {
         height: 35px !important;
     }
 }
+
+ion-menu-button{
+    display: block;
+}
+
+
+
+@media only screen and (min-width:992px) {
+    ion-menu-button{
+        display: none;
+    }
+}

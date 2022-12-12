@@ -8,8 +8,7 @@ import { PagesPageRoutingModule } from './pages-routing.module';
 
 import { PagesPage } from './pages.page';
 import { TabsPage } from '../tabs/tabs.page';
-import { HeaderComponent } from '../components/header/header.component';
-import { SideMenuComponent } from '../components/side-menu/side-menu.component';
+import { SharedComponentsModule } from '../components/component.module';
 
 @NgModule({
   imports: [
@@ -18,8 +17,9 @@ import { SideMenuComponent } from '../components/side-menu/side-menu.component';
     IonicModule,
     PagesPageRoutingModule,
     ReactiveFormsModule,
+    SharedComponentsModule
   ],
-  declarations: [PagesPage, TabsPage, HeaderComponent, SideMenuComponent],
+  declarations: [PagesPage, TabsPage],
   bootstrap: [PagesPage],
 })
 export class PagesPageModule {}
