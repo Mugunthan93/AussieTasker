@@ -1,3 +1,47 @@
-<ion-content [fullscreen]="true">
-  <ion-title>messages</ion-title>
+<ion-content>
+  <div class="messages">
+    <div class="black-bg">
+      <div class="header pt-2">
+        <h1 class="mt-3">Messages</h1>
+        <p>List of tasks posted by users</p>
+      </div>
+      <div class="white-overlay">
+        <div class="scroll p-4">
+          <div class="d-flex align-items-center mt-3">
+            <div class="search">
+              <input type="text" class="search_input" placeholder="Search" />
+              <button type="button" class="search_btn">
+                <ion-icon name="search-outline"></ion-icon>
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="chat-item mt-4 ion-activatable ripple-parent"
+            (click)="openChat()"
+          >
+            <img src="assets/images/user.png" alt="" />
+            <div class="text">
+              <div class="name">Eena Bahnam Polus E.</div>
+              <div class="msg">I want to take up...</div>
+            </div>
+            <div class="time">10 mins ago</div>
+            <ion-ripple-effect></ion-ripple-effect>
+          </div>
+          <div
+            class="chat-item mt-2 ion-activatable ripple-parent"
+            (click)="openChat()"
+          >
+            <img src="assets/images/user.png" alt="" />
+            <div class="text">
+              <div class="name">Eena Bahnam Polus E.</div>
+              <div class="msg">I want to take up...</div>
+            </div>
+            <div class="time">10 mins ago</div>
+            <ion-ripple-effect></ion-ripple-effect>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>

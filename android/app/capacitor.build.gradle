@@ -9,12 +9,17 @@ android {
 
 apply from: "../capacitor-cordova-android-plugins/cordova.variables.gradle"
 dependencies {
+    implementation project(':capacitor-community-stripe')
     implementation project(':capacitor-app')
+    implementation project(':capacitor-geolocation')
+    implementation project(':capacitor-google-maps')
     implementation project(':capacitor-haptics')
     implementation project(':capacitor-keyboard')
+    implementation project(':capacitor-share')
     implementation project(':capacitor-splash-screen')
     implementation project(':capacitor-status-bar')
     implementation "androidx.webkit:webkit:1.4.0"
+    implementation "com.stripe:stripe-android:4.1.2"
 }
 
 

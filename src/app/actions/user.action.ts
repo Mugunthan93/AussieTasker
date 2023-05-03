@@ -18,6 +18,9 @@ export class GetUserData {
   static readonly type = '[UserData] Get';
 }
 
+export class DeleteUserData {
+  static readonly type = '[UserData] Delete';
+}
 export class SetPasswordType {
   static readonly type = '[PassType] Add';
   constructor(public payload: 'Account Creation' | 'Forgot Password') {}

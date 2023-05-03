@@ -1,0 +1,90 @@
+<div class="payment-history mobile">
+  <div class="black-bg">
+    <div class="header">
+      <button class="back" (click)="cancel()">
+        <img src="assets/images/back-yellow.png" alt="" />
+      </button>
+      <h1>Paymeny History</h1>
+      <p>List of tasks posted by users</p>
+    </div>
+    <div class="white-overlay">
+      <div class="scroll p-4">
+        <ng-container *ngTemplateOutlet="paymentHistory"></ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="payment-history web">
+  <ng-container *ngTemplateOutlet="paymentHistory"></ng-container>
+</div>
+
+<ng-template #paymentHistory>
+  <div class="segment">
+    <ion-segment
+      color="light"
+      [value]="segment"
+      mode="ios"
+      (ionChange)="changeSegment($event)"
+    >
+      <ion-segment-button value="tasker">
+        <ion-label>Tasker</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="poster">
+        <ion-label>Poster</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <div class="notes mt-3" *ngIf="segment === 'tasker'">
+    <div class="title">Net earned</div>
+    <p class="amount">{{ earned | currency }}</p>
+    <div class="row justify-content-center p-3">
+      <div class="no-money col-6 col-md-4" *ngIf="earedDetails.length === 0">
+        <img src="assets/images/doller.png" alt="No Money" />
+      </div>
+
+      <table class="table p-4" *ngIf="earedDetails.length > 0">
+        <thead>
+          <tr>
+            <th scope="col">Order #</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Date</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let earn of earedDetails; index as i">
+            <td>{{ earn.id }}</td>
+            <td>{{ earn.amount | currency }}</td>
+            <td>{{ earn.date | date : "MMM d, y" }}</td>
+            <td>{{ earn.status }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="notes mt-3" *ngIf="segment === 'poster'">
+    <div class="title">Amount Spent</div>
+    <p class="amount">{{ spent | currency }}</p>
+    <div class="row justify-content-center">
+      <div class="no-money col-6 col-md-4" *ngIf="spentDetails.length === 0">
+        <img src="assets/images/doller.png" alt="No Money" />
+      </div>
+    </div>
+    <table class="table" *ngIf="spentDetails.length > 0">
+      <thead>
+        <tr>
+          <th scope="col">Order #</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Date</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let country of spentDetails; index as i">
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-template>

@@ -27,7 +27,8 @@ export class VerifyOTPPage implements OnInit, OnDestroy {
   @Select(UserDataState.getUserData) getUserData$!: Observable<UserData>;
   @Select(PasswordState.getPasswordType) passType$!: Observable<string>;
 
-  @ViewChild(IonModal) modal?: IonModal;
+  // @ViewChild(IonModal) modal?: IonModal;
+  @ViewChild(IonModal) successModal?: IonModal;
   userData!: UserData;
   otpValue: string = '';
   otpForm!: FormGroup;
@@ -48,7 +49,9 @@ export class VerifyOTPPage implements OnInit, OnDestroy {
     });
 
     this.getUserData$.subscribe((res: any) => {
-      this.userData = res[0];
+      if (res) {
+        this.userData = res[0];
+      }
     });
 
     this.passType$.subscribe((res: any) => {
@@ -109,7 +112,7 @@ export class VerifyOTPPage implements OnInit, OnDestroy {
           this.otpForm.reset();
           if (res.statusCode == 200) {
             if (this.passType == 'Account Creation') {
-              this.modal?.present();
+              this.successModal?.present();
             } else {
               this.router.navigate(['/changePassword']);
             }
@@ -121,8 +124,11 @@ export class VerifyOTPPage implements OnInit, OnDestroy {
           }, 2000);
         },
         error: (err) => {
-          alert(JSON.stringify(err));
           this.common.setLoading(false);
+          this.common.openToast({
+            msg: 'Please Enter Valid OTP',
+            type: 'error',
+          });
         },
       });
     } else {
@@ -131,7 +137,7 @@ export class VerifyOTPPage implements OnInit, OnDestroy {
   }
 
   async logIn() {
-    await this.modal?.dismiss();
+    await this.successModal?.dismiss();
     setTimeout(() => {
       this.router.navigate(['/userDetails']);
     }, 1500);

@@ -1,0 +1,551 @@
+<ion-content>
+  <div class="createTask">
+    <div class="black-bg" *ngIf="!isWeb">
+      <div class="header">
+        <button class="back" (click)="cancel('cancel')">
+          <img src="assets/images/back-yellow.png" alt="" />
+        </button>
+        <h1>Post a Task</h1>
+        <!-- <p>List of tasks posted by users</p> -->
+      </div>
+      <div class="white-overlay">
+        <div class="scroll p-4">
+          <div class="accordian">
+            <ion-accordion-group #accordionGroup value="first">
+              <ion-accordion value="first" class="my-3">
+                <ion-item slot="header" color="light">
+                  <div class="d-flex align-items-center">
+                    <p class="number">1</p>
+                    <p class="acc-header">Basic info about the project</p>
+                  </div>
+                </ion-item>
+                <div class="ion-padding" slot="content">
+                  <ng-container *ngTemplateOutlet="One"></ng-container>
+                </div>
+              </ion-accordion>
+              <ion-accordion value="second" class="my-3">
+                <ion-item slot="header" color="light">
+                  <div class="d-flex align-items-center">
+                    <p class="number">2</p>
+                    <p class="acc-header">Share more about the project</p>
+                  </div>
+                </ion-item>
+                <div class="ion-padding" slot="content">
+                  <ng-container *ngTemplateOutlet="Two"></ng-container>
+                </div>
+              </ion-accordion>
+              <ion-accordion value="third" class="my-3">
+                <ion-item slot="header" color="light">
+                  <div class="d-flex align-items-center">
+                    <p class="number">3</p>
+                    <p class="acc-header">Provide more details</p>
+                  </div>
+                </ion-item>
+                <div class="p-2" slot="content">
+                  <ng-container *ngTemplateOutlet="Three"></ng-container>
+                </div>
+              </ion-accordion>
+            </ion-accordion-group>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="white-bg" *ngIf="isWeb">
+      <div class="row justify-content-between p-3">
+        <div class="col-3">
+          <div class="d-flex align-items-center px-4" style="width: 80%">
+            <div class="avatar"></div>
+            <p class="logo-text">Aussie <span>Tasker</span></p>
+          </div>
+        </div>
+
+        <div class="col-1">
+          <button class="close-dialog" (click)="cancel('cancel')">
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3 side">
+          <h4 class="side-head">Post a Task</h4>
+          <ul class="mt-5">
+            <li
+              class="side-list"
+              [ngClass]="formNumber === 'first' ? 'active' : ''"
+            >
+              <a class="side-link">Title & Date</a>
+            </li>
+            <li
+              class="side-list"
+              [ngClass]="formNumber === 'second' ? 'active' : ''"
+            >
+              <a class="side-link">Location</a>
+            </li>
+            <li
+              class="side-list"
+              [ngClass]="formNumber === 'third' ? 'active' : ''"
+            >
+              <a class="side-link">Budget</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-6">
+          <div class="form-grid" *ngIf="formNumber === 'first'">
+            <ng-container *ngTemplateOutlet="One"></ng-container>
+          </div>
+          <div class="form-grid" *ngIf="formNumber === 'second'">
+            <ng-container *ngTemplateOutlet="Two"></ng-container>
+          </div>
+          <div class="form-grid" *ngIf="formNumber === 'third'">
+            <ng-container *ngTemplateOutlet="Three"></ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ng-template #One>
+  <form [formGroup]="formOne">
+    <ion-item class="what">
+      <ion-label position="stacked" class="font-semi"
+        >What do you need to be done?</ion-label
+      >
+      <input
+        *ngIf="isWeb"
+        placeholder="90% task are won by 1st impression. Explain briefly why you are best suited to undertake this task"
+        formControlName="taskTitle"
+        class="form_input-2"
+      />
+      <ion-input
+        *ngIf="!isWeb"
+        placeholder="90% tasks are won by 1st impression. Explain briefly why you are best suited to undertake this task"
+        formControlName="taskTitle"
+      ></ion-input>
+    </ion-item>
+    <ion-item class="category">
+      <ion-label position="stacked" class="font-semi">Category</ion-label>
+      <ion-select
+        interface="action-sheet"
+        placeholder="Select Category"
+        (ionChange)="selectCategory(categoryId.value)"
+        #categoryId
+        formControlName="category"
+      >
+        <ion-select-option
+          *ngFor="let catg of categories"
+          [value]="catg.masterId"
+          >{{ catg.title }}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="category">
+      <ion-label position="stacked" class="font-semi">Sub Category</ion-label>
+      <ion-select
+        interface="action-sheet"
+        placeholder="Select Category"
+        formControlName="subCategory"
+      >
+        <ion-select-option
+          *ngFor="let catg of subCategories"
+          [value]="catg.masterId"
+          >{{ catg.title }}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+    <ion-radio-group
+      value=""
+      formControlName="taskWhen"
+      (ionChange)="onSelectTime($event)"
+      [ngClass]="{ 'mt-5': isWeb }"
+    >
+      <p class="font-semi mt-4 radio-label">When do you need this done?</p>
+      <div class="d-flex justify-content-between mt-2">
+        <ion-label class="font-12 d-inline-flex align-items-center">
+          <ion-radio
+            slot="start"
+            value="On Date"
+            mode="md"
+            color="medium"
+            class="me-1"
+          >
+          </ion-radio>
+          On Date
+        </ion-label>
+        <ion-label class="font-12 d-inline-flex align-items-center">
+          <ion-radio
+            slot="start"
+            value="Before Date"
+            mode="md"
+            color="medium"
+            class="me-1"
+          ></ion-radio>
+          Before Date</ion-label
+        >
+
+        <ion-label class="font-12 d-inline-flex align-items-center"
+          ><ion-radio
+            slot="start"
+            value="I’m Flexible"
+            mode="md"
+            color="medium"
+            class="me-1"
+          ></ion-radio>
+          I’m Flexible</ion-label
+        >
+      </div>
+    </ion-radio-group>
+    <ion-item class="datePicker mt-4" *ngIf="showDatePicker">
+      <ion-label class="form_label"> </ion-label>
+      <ion-input
+        type="text"
+        placeholder=""
+        class="form_input"
+        (click)="onFocus(datetime)"
+        [(ngModel)]="datePicked"
+        name="datePicked"
+        formControlName="taskDate"
+      ></ion-input>
+
+      <embed
+        src="assets/images/General/calendar.svg"
+        type=""
+        (click)="onFocus(datetime)"
+      />
+    </ion-item>
+    <div
+      class="checkBox d-flex mt-4 align-items-center"
+      *ngIf="formOne.controls['taskWhen'].value"
+    >
+      <ion-checkbox
+        slot="start"
+        mode="md"
+        formControlName="certainTime"
+        (ionChange)="onChangeCertain($event)"
+      ></ion-checkbox>
+      <ion-label>I need a certain time of day</ion-label>
+    </div>
+    <ion-radio-group
+      [value]="availableTime"
+      formControlName="availableTime"
+      *ngIf="showPeriod"
+    >
+      <div
+        class="d-flex justify-content-center my-4"
+        style="flex-wrap: wrap; padding: 0px 14px"
+      >
+        <div
+          class="timePeriod ion-activatable ripple-parent"
+          [ngClass]="selectedPeriod === 'morning' ? 'active' : ''"
+          (click)="onChangePeriod('morning')"
+        >
+          <p class="m-0">
+            <ion-icon name="partly-sunny-outline"></ion-icon>
+          </p>
+          <p class="m-0">Morning</p>
+          <ion-ripple-effect></ion-ripple-effect>
+        </div>
+
+        <div
+          class="timePeriod ion-activatable ripple-parent"
+          [ngClass]="selectedPeriod === 'midday' ? 'active' : ''"
+          (click)="onChangePeriod('midday')"
+        >
+          <p class="m-0">
+            <ion-icon name="sunny-outline"></ion-icon>
+          </p>
+          <p class="m-0">Midday</p>
+          <ion-ripple-effect></ion-ripple-effect>
+        </div>
+
+        <div
+          class="timePeriod ion-activatable ripple-parent"
+          [ngClass]="selectedPeriod === 'evening' ? 'active' : ''"
+          (click)="onChangePeriod('evening')"
+        >
+          <p class="m-0">
+            <ion-icon name="partly-sunny-outline"></ion-icon>
+          </p>
+          <p class="m-0">Evening</p>
+          <ion-ripple-effect></ion-ripple-effect>
+        </div>
+
+        <div
+          class="timePeriod ion-activatable ripple-parent"
+          [ngClass]="selectedPeriod === 'night' ? 'active' : ''"
+          (click)="onChangePeriod('night')"
+        >
+          <p class="m-0">
+            <ion-icon name="cloudy-night-outline"></ion-icon>
+          </p>
+          <p class="m-0">Night</p>
+          <ion-ripple-effect></ion-ripple-effect>
+        </div>
+      </div>
+    </ion-radio-group>
+
+    <div class="row justify-content-end" *ngIf="!isWeb">
+      <button class="nxt-acc mt-4" (click)="toggleAccordion('second')">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </button>
+    </div>
+    <div class="row justify-content-center mt-5" *ngIf="isWeb">
+      <div class="col-12">
+        <button class="btn-black" (click)="toggleAccordion('second')">
+          Next
+        </button>
+      </div>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #Two>
+  <form [formGroup]="formTwo">
+    <div class="radio wrapper">
+      <ion-radio-group [value]="venue" formControlName="inPerson">
+        <div
+          class="radio-item ion-activatable ripple-parent"
+          (click)="venue = 'inperson'"
+        >
+          <ion-radio slot="start" value="inperson" mode="md"></ion-radio>
+          <ion-label
+            >In Person
+            <br />
+            <span>Select if you need the Tasker Physically there</span>
+          </ion-label>
+          <ion-ripple-effect></ion-ripple-effect>
+        </div>
+
+        <div
+          class="radio-item ion-activatable ripple-parent"
+          (click)="venue = 'online'"
+        >
+          <ion-radio slot="start" value="online" mode="md"></ion-radio>
+          <ion-label
+            >Online
+            <br />
+            <span>Select if the Tasker can do it from home</span>
+          </ion-label>
+          <ion-ripple-effect></ion-ripple-effect>
+        </div>
+      </ion-radio-group>
+    </div>
+
+    <div
+      class="location"
+      *ngIf="formTwo.controls['inPerson'].value === 'inperson'"
+    >
+      <ion-item class="datePicker mt-2">
+        <ion-label class="form_label"> </ion-label>
+        <ion-input
+          type="text"
+          placeholder=""
+          class="form_input"
+          readonly
+          formControlName="location"
+          (click)="getlocationAccess(locationAccess)"
+        ></ion-input>
+
+        <ion-icon
+          (click)="getlocationAccess(locationAccess)"
+          name="location-sharp"
+        ></ion-icon>
+      </ion-item>
+    </div>
+
+    <ion-item
+      class="what"
+      *ngIf="formTwo.controls['inPerson'].value === 'inperson'"
+    >
+      <ion-label position="stacked" class="font-semi">Address</ion-label>
+
+      <ion-input
+        placeholder="Enter Address"
+        formControlName="address"
+      ></ion-input>
+    </ion-item>
+
+    <div class="row justify-content-end" *ngIf="!isWeb">
+      <button class="nxt-acc mt-4" (click)="toggleAccordion('third')">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </button>
+    </div>
+    <div class="row justify-content-between mt-5" *ngIf="isWeb">
+      <div class="col-5">
+        <button
+          class="btn-grey"
+          (click)="toggleAccordion('first', null, 'back')"
+        >
+          Back
+        </button>
+      </div>
+      <div class="col-5">
+        <button class="btn-black" (click)="toggleAccordion('third')">
+          Next
+        </button>
+      </div>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #Three>
+  <form [formGroup]="formThree">
+    <div class="third">
+      <ion-item class="datePicker mt-4">
+        <ion-label position="stacked" class="font-semi">
+          Describe more about the project</ion-label
+        >
+        <div class="d-flex mt-3 w-100">
+          <ion-textarea
+            [autoGrow]="true"
+            type="text"
+            placeholder=""
+            class="form_input font-12"
+            formControlName="description"
+          ></ion-textarea>
+        </div>
+      </ion-item>
+
+      <ion-item class="datePicker mt-4">
+        <ion-label position="stacked" class="font-semi">
+          What is your Budget?</ion-label
+        >
+        <div class="d-flex align-items-center mt-3">
+          <ion-icon name="logo-usd"></ion-icon>
+          <ion-input
+            type="number"
+            placeholder="0"
+            class="form_input ms-2"
+            formControlName="amount"
+          ></ion-input>
+        </div>
+      </ion-item>
+
+      <!-- <div class="dropFile px-3 mt-4">
+        <p class="label font-semi">Add Images <span>(optional)</span></p>
+        <div class="dropBox ion-activatable ripple-parent">
+          <ngx-file-drop
+            dropZoneLabel="Drop files here"
+            (onFileDrop)="dropped($event)"
+            (onFileOver)="fileOver($event)"
+            (onFileLeave)="fileLeave($event)"
+          >
+            <ng-template
+              ngx-file-drop-content-tmp
+              let-openFileSelector="openFileSelector"
+            >
+              <button type="button" (click)="openFileSelector()">
+                <ion-icon name="add-circle-outline"></ion-icon>
+              </button>
+            </ng-template>
+          </ngx-file-drop>
+          <ion-ripple-effect></ion-ripple-effect>
+        </div>
+      </div> -->
+
+      <p class="label font-semi">Add Images <span>(optional)</span></p>
+      <div class="d-flex flex-wrap">
+        <div
+          class="custom-dropzone ion-activatable ripple-parent"
+          ngx-dropzone
+          [accept]="'image/*'"
+          (change)="onSelect($event)"
+        >
+          <ngx-dropzone-label>
+            <ion-icon name="add-circle-outline"></ion-icon>
+            <div *ngIf="isWeb">
+              <h2>My custom dropzone</h2>
+            </div>
+          </ngx-dropzone-label>
+          <ion-ripple-effect></ion-ripple-effect>
+        </div>
+
+        <ngx-dropzone-image-preview
+          ngProjectAs="ngx-dropzone-preview"
+          *ngFor="let f of files"
+          [file]="f"
+          [removable]="true"
+          (removed)="onRemove(f)"
+        >
+          <ngx-dropzone-label>
+            <p class="file-name">
+              {{ f.name }}
+            </p>
+            <br />
+            <p class="file-type">({{ f.type }})</p>
+          </ngx-dropzone-label>
+        </ngx-dropzone-image-preview>
+      </div>
+    </div>
+
+    <div class="row justify-content-end" *ngIf="!isWeb">
+      <button
+        class="nxt-acc mt-4"
+        (click)="toggleAccordion('submit', successModal)"
+      >
+        <ion-icon name="checkmark-outline"></ion-icon>
+      </button>
+    </div>
+
+    <div class="row justify-content-between mt-5" *ngIf="isWeb">
+      <div class="col-5">
+        <button
+          class="btn-grey"
+          (click)="toggleAccordion('second', null, 'back')"
+        >
+          Back
+        </button>
+      </div>
+      <div class="col-5">
+        <button
+          class="btn-black"
+          (click)="toggleAccordion('submit', successModal)"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  </form>
+</ng-template>
+
+<ion-modal #datetime class="datePickerModal">
+  <ng-template>
+    <ion-datetime
+      id="datetime"
+      (ionChange)="ondatePick($event, datetime)"
+    ></ion-datetime>
+  </ng-template>
+</ion-modal>
+
+<ion-modal
+  id="verified-modal"
+  class="success"
+  #successModal
+  trigger="open-custom-dialog"
+>
+  <ng-template>
+    <app-dialog (onClose)="cancel($event)"></app-dialog>
+  </ng-template>
+</ion-modal>
+
+<ion-modal id="geoLocaton-access" #locationAccess>
+  <ng-template>
+    <div class="wrapper locationAccess">
+      <h1>
+        GeoLocation Access
+        <ion-icon name="compass-outline"></ion-icon>
+      </h1>
+
+      <p>Allow to get your Current Location</p>
+
+      <ion-button
+        class="allow"
+        (click)="fetchLocation(); locationAccess.dismiss()"
+        mode="md"
+        >Allow</ion-button
+      >
+    </div>
+  </ng-template>
+</ion-modal>

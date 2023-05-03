@@ -1,0 +1,91 @@
+.tasker-register {
+
+  .scroll {
+    max-width : 100vw;
+    overflow-x: hidden;
+  }
+
+  ion-item {
+
+    ion-label {
+      color    : #707070 !important;
+      font-size: 14px !important;
+    }
+
+    &::part(native) {
+      padding: 0;
+
+      .item-inner {
+        padding: 0;
+      }
+    }
+  }
+
+  ion-thumbnail {
+    width : 20px;
+    height: 20px;
+    margin: 0 15px 0 0;
+
+    embed {
+      width: 100%;
+    }
+
+    ion-icon {
+      font-size: 22px !important;
+      color    : #8E8E8E !important;
+    }
+  }
+
+  .itemList {
+    transform : translateX(0vw);
+    transition: transform ease-in-out 0.5s;
+  }
+
+  .moveToHide {
+    transform : translateX(-100vw);
+    transition: transform ease-in-out 0.5s;
+  }
+
+  .editForm {
+    position  : relative;
+    bottom    : 40%;
+    transform : translateX(100vw);
+    transition: transform ease-in-out 0.5s;
+  }
+
+  .moveToShow {
+    transform : translateX(0vw);
+    transition: transform ease-in-out 0.5s;
+  }
+
+  .uploadImage {
+    width : 100%;
+    margin: 40px 0;
+  }
+
+  .backToList {
+    background  : transparent;
+    border      : none;
+    padding     : 10px;
+    width       : 40px;
+    font-size   : 24px;
+    aspect-ratio: 1/1;
+
+    ion-icon {
+      color: #707070;
+    }
+  }
+
+  .what {
+    margin-top: 20px;
+
+    ion-label {
+      font-size: 16px !important;
+    }
+
+    ion-input {
+      font-size : 12px;
+      margin-top: 15px;
+    }
+  }
+}

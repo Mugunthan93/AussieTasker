@@ -1,13 +1,12 @@
 <ion-content class="signUp" [fullscreen]="true">
   <ion-grid class="h-100">
     <ion-row class="h-100">
-      <ion-col sizeLg="6" sizeMd="0" class="left-banner">
+      <ion-col sizeLg="8" sizeMd="0" class="left-banner">
         <div>
-          <h1>Welcome</h1>
-          <h3>Aussie Tasker App</h3>
+          <embed src="assets/images/1 startup/1 screen/1 image.svg" alt="" />
         </div>
       </ion-col>
-      <ion-col sizeLg="6" sizeMd="12" size="12">
+      <ion-col sizeLg="4" sizeMd="12" size="12">
         <div class="signUp-grid">
           <ion-grid>
             <ion-row class="ion-justify-content-center ion-align-items-center">
@@ -56,6 +55,21 @@
                       type="password"
                       formControlName="password"
                       placeholder="Create Password"
+                      class="form_input"
+                    ></ion-input>
+                  </ion-item>
+                  <ion-item class="margin-bottom">
+                    <ion-label class="form_label">
+                      <img
+                        src="assets/images/login/password-icon.png"
+                        alt=""
+                        class="form_icon"
+                      />
+                    </ion-label>
+                    <ion-input
+                      type="password"
+                      formControlName="confirmPassword"
+                      placeholder="Confirm Password"
                       class="form_input"
                     ></ion-input>
                   </ion-item>

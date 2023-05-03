@@ -1,0 +1,42 @@
+<div class="about">
+  <div class="trans-bg">
+    <div class="row justify-content-end">
+      <button class="col-2 close-modal" (click)="cancel()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </button>
+    </div>
+    <ng-container *ngTemplateOutlet="about"></ng-container>
+  </div>
+</div>
+
+<div class="web-about">
+  <ng-container *ngTemplateOutlet="about"></ng-container>
+</div>
+
+<ng-template #about>
+  <div class="content p-3 mt-2">
+    <div class="row align-items-center justify-content-center">
+      <div class="avatar col-3 col-md-1 m-0"></div>
+      <div class="col-8">
+        <h1 class="header">About Aussie Tasker</h1>
+        <p class="subHeader">Keep everything on track</p>
+      </div>
+    </div>
+    <div class="px-3 mt-4 mb-5">
+      <p class="quote">
+        “The only way to do great work is to love” what you do ”
+      </p>
+      <p class="para">
+        Aussie tasker is a trusted community platform that connects people who
+        need to outsource tasks and find local services, with people who are
+        looking to earn money and ready to work. From simple to complicated
+        tasks, Airtasker can help you complete your home cleaning, handyman
+        jobs, admin work, photography, graphic design or even build a website.
+        Go online or download the app and Aussie tasker will take you from
+        'things to do' to 'everything's done'.
+      </p>
+      <p class="green">Aussie tasker.</p>
+      <p class="yellow">Get More Done.</p>
+    </div>
+  </div>
+</ng-template>

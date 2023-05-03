@@ -1,0 +1,207 @@
+<div class="taskDetail">
+  <div class="header m-3">
+    <button class="back" (click)="cancel()">
+      <img src="assets/images/back.png" alt="" />
+    </button>
+  </div>
+
+  <div class="p-3 mt-4 segments">
+    <div class="segment">
+      <ion-segment
+        color="light"
+        value="details"
+        mode="ios"
+        (ionChange)="changeSegment($event)"
+      >
+        <ion-segment-button value="details">
+          <ion-label>Deatils</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="offers">
+          <ion-label>Offers</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+    <div class="details" *ngIf="segment === 'details' && currentUser">
+      <div class="d-flex mt-5">
+        <div class="green-border"></div>
+        <div class="title">
+          {{ task.taskTitle }}
+          <br /><small>{{ task.taskShowId }}</small>
+        </div>
+      </div>
+
+      <div class="d-flex mt-5 justify-content-between">
+        <div class="d-flex">
+          <img
+            *ngIf="task.profilePic.length > 0"
+            class="user-pic"
+            [src]="task.profilePic"
+          />
+          <span class="profileImage" *ngIf="task.profilePic.length === 0">{{
+            task.userName.substr(0, 2)
+          }}</span>
+          <p class="name font-12">
+            Posted by <br /><span class="font-16"
+              >{{ currentUser.firstName }} {{ currentUser.lastName }}</span
+            >
+          </p>
+        </div>
+        <div>
+          <!-- <button class="open-btn">Open</button> -->
+          <p class="offer font-12">{{ task.totalTaskOfferCount }} Offers</p>
+        </div>
+        <div *ngIf="isWeb" class="makeOffer p-2">
+          <div class="budget">
+            <p class="font-12">Task Budget</p>
+            <p class="amount">{{ task.budget | currency }}</p>
+          </div>
+          <button class="btn-black" (click)="openOffer()">Make an Offer</button>
+        </div>
+      </div>
+      <div class="row mt-4 p-3 w-100">
+        <div class="col-7">
+          <div class="d-flex data align-items-center">
+            <img src="assets/images/location.png" alt="" />
+            <p class="dataText">
+              Location <br /><span>{{
+                task.address ? "In house" : "Remote"
+              }}</span>
+            </p>
+          </div>
+        </div>
+        <div class="col-6 mt-4">
+          <div class="d-flex data align-items-center">
+            <img src="assets/images/calander.png" alt="" />
+            <p class="dataText">
+              Posted On <br /><span>{{
+                task.createdAt | date : "EEE, MMM, dd"
+              }}</span>
+            </p>
+          </div>
+        </div>
+        <div class="col-6 mt-4">
+          <div class="d-flex data align-items-center">
+            <img src="assets/images/clock.png" alt="" />
+            <p class="dataText">
+              Due Date <br /><span>{{
+                task.taskDate | date : "EEE, MMM, dd"
+              }}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="info">
+        <h5>Info</h5>
+        <p>
+          {{
+            task.description
+              | slice : 0 : (isLess ? 150 : task.description.length)
+          }}
+          <span *ngIf="isLess">. . .</span>
+        </p>
+        <p class="less" (click)="isLess = !isLess">
+          {{ isLess ? "More" : "Less" }}
+        </p>
+      </div>
+    </div>
+
+    <div class="offers px-2" *ngIf="segment === 'offers'">
+      <div class="feedback mt-4">
+        <div class="d-flex align-items-center">
+          <img src="assets/images/user.png" alt="" />
+          <p class="m-0">
+            <span>Eena Bahnam Polus E.</span> <br />100% Completion rate
+          </p>
+          <div class="rating">
+            <ngb-rating [rate]="3"> </ngb-rating>
+            <p class="m-0">3.0(26)</p>
+          </div>
+        </div>
+        <div class="content-text">
+          <p>
+            Hi there 🤝 <br />
+            This is Eena an Aussie based Graphic Designer & Web Developer will
+            gladly assist you with this task. I'll convert your idea into a
+            unique and creative design that will make you jump out of your seat.
+            If you are looking for a professional and creative design for your
+            business, then rest assured that you have found someone who knows
+            the ins and outs of Designs and Development.
+          </p>
+          <div class="less">Less</div>
+        </div>
+        <p class="age">1 day ago</p>
+      </div>
+
+      <div class="feedback mt-4">
+        <div class="d-flex align-items-center">
+          <img src="assets/images/user-2.png" alt="" />
+          <p class="m-0">
+            <span>Eena Bahnam Polus E.</span> <br />100% Completion rate
+          </p>
+          <div class="rating">
+            <ngb-rating [rate]="3"> </ngb-rating>
+            <p class="m-0">3.0(26)</p>
+          </div>
+        </div>
+        <div class="content-text">
+          <p>
+            Hi there 🤝 <br />
+            This is Eena an Aussie based Graphic Designer & Web Developer will
+            gladly assist you with this task. I'll convert your idea into a
+            unique and creative design that will make you jump out of your seat.
+            If you are looking for a professional and creative design for your
+            business, then rest assured that you have found someone who knows
+            the ins and outs of Designs and Development.
+          </p>
+          <div class="less">Less</div>
+        </div>
+        <p class="age">1 day ago</p>
+      </div>
+
+      <div class="feedback mt-4">
+        <div class="d-flex align-items-center">
+          <img src="assets/images/user.png" alt="" />
+          <p class="m-0">
+            <span>Eena Bahnam Polus E.</span> <br />100% Completion rate
+          </p>
+          <div class="rating">
+            <ngb-rating [rate]="3"> </ngb-rating>
+            <p class="m-0">3.0(26)</p>
+          </div>
+        </div>
+        <div class="content-text">
+          <p>
+            Hi there 🤝 <br />
+            This is Eena an Aussie based Graphic Designer & Web Developer will
+            gladly assist you with this task. I'll convert your idea into a
+            unique and creative design that will make you jump out of your seat.
+          </p>
+          <div class="less">Less</div>
+        </div>
+        <p class="age">1 day ago</p>
+      </div>
+    </div>
+
+    <div *ngIf="!isWeb" class="makeOffer p-2">
+      <div class="budget">
+        <p class="font-12">Task Budget</p>
+        <p class="amount">{{ task.budget | currency }}</p>
+      </div>
+      <button class="btn-black" (click)="openOffer()">Make an Offer</button>
+    </div>
+    <!-- <p class="report">Report this task</p> -->
+  </div>
+</div>
+
+<ion-modal
+  id="verified-modal"
+  class="success"
+  #successModal
+  trigger="open-custom-dialog"
+>
+  <ng-template>
+    <app-dialog (onClose)="cancelSuccess($event)"></app-dialog>
+  </ng-template>
+</ion-modal>

@@ -6,8 +6,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { UserData } from 'src/app/Models/userData';
 import { ApiService } from 'src/app/services/api.service';
 import { CommonService } from 'src/app/services/common.service';
+import { UserDataState } from 'src/app/state/user.state';
 
 @Component({
   selector: 'app-user-details',
@@ -16,10 +20,15 @@ import { CommonService } from 'src/app/services/common.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class UserDetailsPage implements OnInit {
+  @Select(UserDataState.getUserData) userData$!: Observable<UserData[]>;
   userForm!: FormGroup;
   countryList: any[] = [];
   languages: any[] = [];
   regions: any[] = [];
+  skills = [];
+  newSkill = '';
+  isAddChip = false;
+  userData: any;
 
   constructor(
     private fb: FormBuilder,
@@ -37,6 +46,13 @@ export class UserDetailsPage implements OnInit {
         console.log(err);
       },
     });
+
+    this.userData$.subscribe((res: any) => {
+      if (res && res.length > 0) {
+        this.userData = res[0];
+        console.log(this.userData);
+      }
+    });
   }
 
   ngOnInit() {}
@@ -48,11 +64,9 @@ export class UserDetailsPage implements OnInit {
       mobileNumber: new FormControl('', [Validators.required]),
       skills: new FormControl('', [Validators.required]),
       country: new FormControl('', [Validators.required]),
-      languageKnown: new FormControl('', [Validators.required]),
       region: new FormControl('', [Validators.required]),
       workingExperience: new FormControl('', [Validators.required]),
       tagLine: new FormControl('', [Validators.required]),
-      resume: new FormControl('', [Validators.required]),
     });
   }
 
@@ -76,16 +90,59 @@ export class UserDetailsPage implements OnInit {
     this.userForm.get('country')?.patchValue(country.detail.value?.name);
   }
 
-  onSubmit() {
+  async onSubmit() {
     this.userForm.markAllAsTouched();
-    this.userForm
-      .get('skills')
-      ?.patchValue(this.userForm.get('skills')?.value.split(', '));
-    console.log(this.userForm.value);
-    // if (this.userForm.valid) {
-    this.router.navigate(['/home']);
-    // } else {
-    //   this.common.openToast({ msg: 'Please Fill All Fields', type: 'error' });
-    // }
+    // this.userForm
+    //   .get('skills')
+    //   ?.patchValue(this.userForm.get('skills')?.value.split(', '));
+
+    let req = {
+      userId: this.userData._id,
+      region: this.userForm.get('region')?.value,
+      firstName: this.userForm.get('firstName')?.value,
+      lastName: this.userForm.get('lastName')?.value,
+      mobileNumber: this.userForm.get('mobileNumber')?.value,
+      country: this.userForm.get('country')?.value,
+      skills: this.userForm.get('skills')?.value,
+      workingExperience: this.userForm.get('workingExperience')?.value,
+      tagLine: this.userForm.get('tagLine')?.value,
+    };
+
+    console.log(req);
+
+    this.common.setLoading(true);
+
+    await this.api.onCreateProfile(req).subscribe({
+      next: () => {
+        this.userForm.reset();
+        this.common.setLoading(false);
+        this.router.navigate(['/home']);
+      },
+      error: (err) => {
+        this.common.setLoading(false);
+        console.log(err.message);
+        this.common.openToast({ msg: err.message, type: 'error' });
+      },
+    });
+  }
+
+  onEnterSkill(e: any) {
+    // console.log(e);
+    this.newSkill = e.target.value;
+  }
+
+  onSaveChip(skills: any[]) {
+    skills.push(this.newSkill);
+    this.isAddChip = false;
+    this.newSkill = '';
+    this.userForm.controls['skills'].patchValue(this.skills);
+  }
+
+  onAddChip() {
+    this.isAddChip = true;
+  }
+
+  onDeleteChip(i: number) {
+    this.skills.splice(i, 1);
   }
 }

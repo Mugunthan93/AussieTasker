@@ -1,32 +1,32 @@
 :host {
-  height: 100vh;
+  height       : 100vh;
   // margin-top: 5vh;
 }
 
 .signUp {
   .signUp-grid {
-    height: 100%;
-    display: flex;
+    height     : 100%;
+    display    : flex;
     align-items: center;
   }
 
 
   .signUp_header {
-    font-size: 24px;
+    font-size  : 24px;
     font-weight: 900;
     font-family: "Poppins-bold";
   }
 
   .signUp_subHeader {
     font-size: 14px;
-    margin: 0;
-    color: var(--grey);
+    margin   : 0;
+    color    : var(--grey);
   }
 
   .signUp_form {
     .form_label {
-      width: 24px;
-      margin-right: 2%;
+      width        : 24px;
+      margin-right : 2%;
       margin-bottom: 0 !important;
     }
 
@@ -40,35 +40,36 @@
 
     .form_icon {
       font-size: 23px;
-      color: var(--grey);
+      color    : var(--grey);
     }
 
     .form_forgot {
       margin: 5px 0;
       cursor: pointer;
+
       a {
-        color: var(--green);
+        color    : var(--green);
         font-size: 14px;
       }
     }
 
     .form_signUp_width {
       font-size: 12px;
-      color: var(--grey);
+      color    : var(--grey);
     }
 
     .signUp_facebook,
     .signUp_google {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0px 0px 7px 0px #8d8d8d6e;
-      padding: 6% 10%;
-      width: 97%;
-      display: inline-flex;
-      align-items: center;
-      font-weight: 900;
+      background     : #fff;
+      border-radius  : 12px;
+      box-shadow     : 0px 0px 7px 0px #8d8d8d6e;
+      padding        : 10px;
+      width          : 97%;
+      display        : inline-flex;
+      align-items    : center;
+      font-weight    : 900;
       justify-content: space-evenly;
-      font-size: 14px;
+      font-size      : 14px;
 
       ion-icon {
         font-size: 25px;
@@ -76,34 +77,36 @@
     }
 
     .social-icon {
-      width: 20%;
+      width: 20px;
     }
 
-    .signUp_facebook {
+    .signUp_facebook>span {
       color: #2196f3;
     }
 
-    .signUp_google {
+    .signUp_google>span {
       color: #e3665c;
     }
   }
 
   .signUp_agree {
     font-size: 12px;
-    color: var(--grey);
+    color    : var(--grey);
+
     span {
-      color: var(--green);
+      color : var(--green);
       cursor: pointer;
     }
   }
 
   .signUp_login {
     font-size: 14px;
+
     a {
-      color: var(--green);
-      cursor: pointer;
+      color          : var(--green);
+      cursor         : pointer;
       text-decoration: none;
-      font-family: var(--font-bold);
+      font-family    : var(--font-bold);
     }
   }
 }

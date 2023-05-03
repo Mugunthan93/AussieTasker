@@ -1,0 +1,60 @@
+<div class="chatBox">
+  <div class="row">
+    <button class="back" (click)="cancel()">
+      <img src="assets/images/back.png" alt="Go Back" />
+    </button>
+  </div>
+  <div class="d-flex align-items-center px-2 chat-header">
+    <img class="chatUser-pic me-3" src="assets/images/user-2.png" alt="" />
+    <p class="chatUser-name font-16 font-semi m-0">{{ chatUser }}</p>
+  </div>
+
+  <div class="chats" #chat>
+    <div
+      class="d-flex align-items-center mb-3"
+      *ngFor="let msg of messages; let i = index"
+      [ngClass]="
+        msg.user === currentUser
+          ? 'justify-content-end'
+          : 'justify-content-start'
+      "
+    >
+      <img
+        *ngIf="msg.user !== currentUser"
+        src="assets/images/user-2.png"
+        alt=""
+        class="me-2"
+      />
+      <div class="text">
+        <p class="m-0" [ngClass]="msg.user === currentUser ? 'right' : 'left'">
+          {{ msg.text }}
+        </p>
+        <p
+          class="time m-0"
+          [ngClass]="msg.user === currentUser ? 'text-end' : 'text-start'"
+        >
+          {{ msg.time | date : "shortTime" }}
+        </p>
+      </div>
+      <img
+        *ngIf="msg.user === currentUser"
+        src="assets/images/user.png"
+        alt=""
+        class="ms-2"
+      />
+    </div>
+  </div>
+  <div class="chat-input">
+    <form (submit)="sendMsg()">
+      <input
+        type="text"
+        name="msgEntered"
+        [(ngModel)]="msgEntered"
+        placeholder="Your Message"
+      />
+      <button type="submit">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </button>
+    </form>
+  </div>
+</div>

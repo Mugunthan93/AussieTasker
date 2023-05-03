@@ -1,0 +1,113 @@
+<div class="mySKills" *ngIf="!isWeb">
+  <div class="trans-bg">
+    <div class="row justify-content-end">
+      <button class="col-2 close-modal" (click)="cancel()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </button>
+    </div>
+    <div class="content p-3 mt-2">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-3 m-0">
+          <img class="about-pic" src="assets/images/skills-white.png" alt="" />
+        </div>
+        <div class="col-8 p-0">
+          <h1 class="header">My Skills</h1>
+        </div>
+      </div>
+      <ng-container *ngTemplateOutlet="skills"></ng-container>
+    </div>
+  </div>
+</div>
+
+<div class="mySkills-web" *ngIf="isWeb">
+  <ng-container *ngTemplateOutlet="skills"></ng-container>
+</div>
+
+<ng-template #skills>
+  <div class="px-3 mt-4 mb-3 skill-temp">
+    <p class="text-end edit" (click)="editContent()" *ngIf="!isEdit">Edit</p>
+    <p class="text-end edit" (click)="editContent()" *ngIf="isEdit">Save</p>
+    <br />
+
+    <div *ngFor="let skills of skillsList; let i = index">
+      <div class="skill-item">
+        <img [src]="skills.img" alt="" />
+        <p class="skill-head">{{ skills.header }}</p>
+      </div>
+      <div class="skill-list mt-3">
+        <ion-chip *ngFor="let sk of skills.skill; let j = index">
+          <ion-label>{{ sk }}</ion-label>
+          <ion-icon
+            name="close-circle-outline"
+            *ngIf="isEdit"
+            (click)="removeChip(skills, j)"
+          ></ion-icon>
+        </ion-chip>
+        <div class="add-group" *ngIf="isEdit && skills.isAdd">
+          <input type="text" class="addInput" [(ngModel)]="newChip" />
+          <button
+            class="add-btn"
+            (click)="onSaveChip(skills)"
+            [disabled]="!newChip"
+          >
+            <ion-icon name="checkmark-outline"></ion-icon>
+          </button>
+        </div>
+        <button
+          class="add"
+          (click)="onAddChip(skills)"
+          *ngIf="isEdit && !skills.isAdd"
+        >
+          <ion-icon name="add-circle"></ion-icon>
+        </button>
+      </div>
+    </div>
+
+    <!-- <div class="skill-item">
+      <img src="assets/images/education.png" alt="" />
+      <p class="skill-head">Education</p>
+    </div>
+    <div class="skill-list mt-3">
+      <p>Masters in Business Management</p>
+      <p>MBA- English(lit)</p>
+      <p>B.sc (science)</p>
+    </div>
+
+    <div class="skill-item mt-3">
+      <img src="assets/images/courses.png" alt="" />
+      <p class="skill-head">Specialities</p>
+    </div>
+    <div class="skill-list mt-3">
+      <p>Masters in Business Management</p>
+      <p>MBA- English(lit)</p>
+      <p>B.sc (science)</p>
+    </div>
+
+    <div class="skill-item mt-3">
+      <img src="assets/images/language.png" alt="" />
+      <p class="skill-head">Languages</p>
+    </div>
+    <div class="skill-list mt-3">
+      <p>Tamil</p>
+      <p>English</p>
+      <p>French</p>
+    </div>
+
+    <div class="skill-item mt-3">
+      <img src="assets/images/work.png" alt="" />
+      <p class="skill-head">Work</p>
+    </div>
+    <div class="skill-list mt-3">
+      <p>10+ Years as HR</p>
+      <p>5 years as a Recruiter</p>
+    </div>
+
+    <div class="skill-item mt-3">
+      <img src="assets/images/transporation.png" alt="" />
+      <p class="skill-head">Transportation</p>
+    </div>
+    <div class="skill-list mt-3">
+      <p>Online</p>
+    </div> -->
+  </div>
+</ng-template>

@@ -1,0 +1,208 @@
+<div class="tasks scroll p-4">
+  <div class="d-flex align-items-center mb-3">
+    <div class="search">
+      <input
+        type="text"
+        class="search_input"
+        placeholder="Search"
+        (keyup)="onInputChange($event)"
+      />
+      <button
+        type="button"
+        class="search_btn"
+        (click)="sorting()"
+        title="Sorting"
+      >
+        <ion-icon name="search-outline"></ion-icon>
+      </button>
+    </div>
+    <button class="filter">
+      <img src="assets/images/filter.png" alt="Filter" />
+    </button>
+  </div>
+
+  <div class="segment">
+    <ion-segment
+      color="light"
+      value="Open"
+      mode="ios"
+      (ionChange)="change($event)"
+    >
+      <ion-segment-button value="Open">
+        <ion-label>Open</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="Inprogress">
+        <ion-label>InProgress</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="Closed">
+        <ion-label>Closed</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div
+    class="task-card"
+    *ngFor="let task of taskList"
+    (click)="openDetails(task)"
+  >
+    <div class="row justify-content-between">
+      <div class="col-1 p-0">
+        <div
+          class=""
+          [ngClass]="task.budget > 200 ? 'label-green' : 'label-red'"
+        ></div>
+      </div>
+      <div class="col-8 p-0 mt-2 d-flex">
+        <p class="task-header">
+          <span class="title">{{ task.taskTitle }}</span>
+          <span
+            class="status"
+            [ngClass]="task.status === 'Open' ? 'active' : ''"
+            >{{ task.status }}</span
+          >
+        </p>
+      </div>
+      <div class="col-3">
+        <div class="task-pic">
+          <img
+            src="{{ task.profilePic }}"
+            [alt]="task.taskTitle"
+            width="100%"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="task-amount" [ngClass]="task.budget > 200 ? 'green' : 'red'">
+      {{ task.budget | currency }}
+    </div>
+    <div class="d-flex p-2 mt-1 justify-content-between">
+      <div class="chip">
+        <img alt="Location" src="assets/images/location.png" />
+        <p>{{ task.address ? "In house" : "Remote" }}</p>
+      </div>
+      <div class="chip">
+        <img alt="Location" src="assets/images/calander.png" />
+        <p>{{ task.taskDate | date : "EEE, MMM, dd" }}</p>
+      </div>
+      <div class="chip">
+        <img alt="Location" src="assets/images/clock.png" />
+        <p>
+          {{
+            task.availableTime ? task.availableTime : ("Anytime" | titlecase)
+          }}
+        </p>
+      </div>
+    </div>
+    <p
+      class="w-100 text-end px-3 py-1 m-0 font-12"
+      [ngClass]="task.budget > 200 ? 'green' : 'red'"
+    >
+      5 offers
+    </p>
+  </div>
+
+  <button class="filter-float" (click)="filter()">
+    <img src="assets/images/filter-yellow.png" alt="Filter" />
+  </button>
+</div>
+
+<ion-modal #modal trigger="open-custom-dialog" class="browse-filter">
+  <ng-template>
+    <div class="trans-bg">
+      <div class="row justify-content-end">
+        <button class="col-2 close-modal" (click)="cancel()">
+          <ion-icon name="close-circle-outline"></ion-icon>
+        </button>
+      </div>
+      <div class="content filter-content p-3 mt-2">
+        <div class="row align-items-center justify-content-center px-3">
+          <div class="filter-head mt-4">Other Filters</div>
+          <ion-list>
+            <ion-item>
+              <ion-label>
+                <p class="toggle-head">Available Tasks only</p>
+                <span class="toggle-subhead"
+                  >Hide tasks that are already assigned</span
+                >
+              </ion-label>
+              <ion-toggle slot="end" mode="md"></ion-toggle>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>
+                <p class="toggle-head">Tasks with offers only</p>
+                <span class="toggle-subhead">Hide tasks that have offers</span>
+              </ion-label>
+              <ion-toggle slot="end" mode="md"></ion-toggle>
+            </ion-item>
+          </ion-list>
+          <div class="filter-head mt-3">Sort By</div>
+
+          <ion-list class="px-2">
+            <ion-radio-group value="Recomended">
+              <ion-item>
+                <ion-label>Recomended</ion-label>
+                <ion-radio slot="end" value="Recomended" mode="ios"></ion-radio>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>Price high to low</ion-label>
+                <ion-radio
+                  slot="end"
+                  value="Price high to low"
+                  mode="ios"
+                ></ion-radio>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>Price low to high</ion-label>
+                <ion-radio
+                  slot="end"
+                  value="Price low to high"
+                  mode="ios"
+                ></ion-radio>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>Due date: Earliest</ion-label>
+                <ion-radio
+                  slot="end"
+                  value="Due date: Earliest"
+                  mode="ios"
+                ></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Due date: Latest</ion-label>
+                <ion-radio
+                  slot="end"
+                  value="Due date: Latest"
+                  mode="ios"
+                ></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Newest Task</ion-label>
+                <ion-radio
+                  slot="end"
+                  value="Newest Task"
+                  mode="ios"
+                ></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>Old task Task</ion-label>
+                <ion-radio
+                  slot="end"
+                  value="Old task Task"
+                  mode="ios"
+                ></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+
+          <div class="m-4">
+            <button class="btn-black" (click)="Submit()">Apply</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ion-modal>

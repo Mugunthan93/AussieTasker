@@ -1,22 +1,108 @@
-<ion-header class="ion-no-border" >
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <div class="d-flex justify-content-between align-items-center mx-2">
-      <ion-buttons slot="start">
+    <div class="d-flex justify-content-between align-items-center m-2">
+      <ion-buttons slot="start" class="menu-btn">
         <ion-menu-button>
-          <button class="menu-bar">
-          </button>
+          <button
+            class="menu-bar"
+            [ngClass]="currentUrl === '/home' ? '' : 'dark-menu'"
+          ></button>
         </ion-menu-button>
       </ion-buttons>
 
+      <div
+        class="avatar m-0 ps-4"
+        style="width: 60px"
+        [routerLink]="['/home']"
+      ></div>
+
       <div class="right d-flex align-items-start">
-        <button class="menu-noty me-2">
+        <div class="web-btns">
+          <button
+            [routerLink]="['/browseTasks']"
+            routerLinkActive="router-link-active"
+          >
+            Browse Task
+          </button>
+          <button id="popover-button">Categories</button>
+          <button>How it works</button>
+          <button class="highlighted" [routerLink]="['/login']">
+            Become a Tasker
+          </button>
+        </div>
+        <button
+          class="menu-noty me-2"
+          [ngClass]="currentUrl === '/home' || isWeb ? '' : 'dark-noty'"
+          (click)="openNotification()"
+        >
           <ion-icon name="notifications"></ion-icon>
         </button>
+        <!-- <button
+          class="menu-noty me-2"
+          [routerLink]="['/browseTasks']"
+          routerLinkActive="router-link-active"
+        >
+          <ion-icon name="notifications"></ion-icon>
+        </button> -->
         <ion-avatar (click)="openProfile()">
-          <img src="../../../assets/images/user.png" alt="">
+          <img src="assets/images/user.png" alt="" title="profile" />
         </ion-avatar>
       </div>
     </div>
   </ion-toolbar>
 </ion-header>
 
+<ion-modal
+  id="verified-modal"
+  class="success"
+  #successModal
+  trigger="open-custom-dialog"
+>
+  <ng-template>
+    <app-dialog></app-dialog>
+  </ng-template>
+</ion-modal>
+
+<ion-popover
+  trigger="popover-button"
+  side="bottom"
+  alignment="center"
+  [dismissOnSelect]="true"
+>
+  <ng-template>
+    <ion-content>
+      <ion-list>
+        <ion-item [button]="true" id="nested-trigger">Category 1</ion-item>
+        <ion-item [button]="true" id="nested-trigger">Category 2</ion-item>
+        <ion-item [button]="true" id="nested-trigger">Category 3</ion-item>
+        <ion-item [button]="true" id="nested-trigger">Category 4</ion-item>
+        <!-- <ion-item [button]="true" id="nested-trigger">More options...</ion-item> -->
+
+        <ion-popover
+          trigger="nested-trigger"
+          [dismissOnSelect]="true"
+          side="end"
+        >
+          <ng-template>
+            <ion-content>
+              <ion-list>
+                <ion-item [button]="true" [detail]="false">
+                  Sub Category 1
+                </ion-item>
+                <ion-item [button]="true" [detail]="false">
+                  Sub Category 2
+                </ion-item>
+                <ion-item [button]="true" [detail]="false">
+                  Sub Category 3
+                </ion-item>
+                <ion-item [button]="true" [detail]="false">
+                  Sub Category 4
+                </ion-item>
+              </ion-list>
+            </ion-content>
+          </ng-template>
+        </ion-popover>
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-popover>

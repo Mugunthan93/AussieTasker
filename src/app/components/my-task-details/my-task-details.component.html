@@ -1,0 +1,153 @@
+<ion-content class="taskDetail">
+  <div class="header m-3">
+    <button class="back" (click)="cancel()">
+      <img src="assets/images/back.png" alt="" />
+    </button>
+  </div>
+
+  <div class="p-3 mt-4">
+    <div class="segment">
+      <ion-segment
+        color="light"
+        value="offers"
+        mode="ios"
+        (ionChange)="changeSegment($event)"
+      >
+        <ion-segment-button value="offers">
+          <ion-label>Offers</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="questions">
+          <ion-label>Questions</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="details">
+          <ion-label>Details</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+    <div class="details px-2" *ngIf="segment === 'details'">
+      <div class="d-flex mt-5">
+        <div class="green-border"></div>
+        <div class="title">
+          Need a wordpress website for my construction company
+        </div>
+      </div>
+
+      <div class="d-flex mt-5 justify-content-between">
+        <div class="d-flex">
+          <img class="user-pic" src="assets/images/user.png" alt="" />
+          <p class="name font-12">
+            Posted by <br /><span class="font-16">Andrea Lawson</span>
+          </p>
+        </div>
+        <div>
+          <button class="open-btn font-12">Open</button>
+          <p class="offer font-12">5 Offers</p>
+        </div>
+      </div>
+      <div class="row mt-4 p-3">
+        <div class="col-7">
+          <div class="d-flex data align-items-center">
+            <img src="assets/images/location.png" alt="" />
+            <p class="dataText">Location <br /><span>Remote</span></p>
+          </div>
+        </div>
+        <div class="col-6 mt-4">
+          <div class="d-flex data align-items-center">
+            <img src="assets/images/calander.png" alt="" />
+            <p class="dataText">Posted On <br /><span>Sat, Nov 18</span></p>
+          </div>
+        </div>
+        <div class="col-6 mt-4">
+          <div class="d-flex data align-items-center">
+            <img src="assets/images/clock.png" alt="" />
+            <p class="dataText">Due Date <br /><span>Sat, Nov 18</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="info">
+        <h5>Info</h5>
+        <p>
+          Industry Experience- FMCG, Product (Hard core selling companies)
+          Understanding of the full marketing mix Strong analytical skills
+          partnered with a creative mind Data-driven thinking Outstanding
+          presentation and communication skills
+        </p>
+        <p class="less">Less</p>
+      </div>
+    </div>
+
+    <div class="offers px-2" *ngIf="segment === 'offers'">
+      <div class="d-flex justify-content-between mt-4">
+        <div class="have">
+          <p>you have <br /><span>1 New Offer</span></p>
+        </div>
+        <div class="views">
+          <p>13 views</p>
+          <button class="getMore font-12">get more views</button>
+        </div>
+      </div>
+
+      <div class="feedback mt-4">
+        <div class="d-flex align-items-center">
+          <img src="assets/images/user.png" alt="" />
+          <p class="m-0">
+            <span>Eena Bahnam Polus E.</span> <br />100% Completion rate
+          </p>
+          <div class="rating">
+            <ngb-rating [rate]="3"> </ngb-rating>
+            <p class="m-0">3.0(26)</p>
+          </div>
+        </div>
+        <div class="row my-3 px-2 justify-content-between align-items-center">
+          <div class="col-5 col-md-4 col-lg-3">
+            <button class="btn-black offer-accept" (click)="onAccept()">
+              Accept
+            </button>
+          </div>
+
+          <div class="col-4 offer-amount">$ 200</div>
+        </div>
+        <div class="content-text">
+          <p>
+            Hi there 🤝 <br />
+            This is Eena an Aussie based Graphic Designer & Web Developer will
+            gladly assist you with this task. I'll convert your idea into a
+            unique and creative design that will make you jump out of your seat.
+            If you are looking for a professional and creative design for your
+            business, then rest assured that you have found someone who knows
+            the ins and outs of Designs and Development.
+          </p>
+          <div class="less">Less</div>
+        </div>
+        <p class="age">1 day ago</p>
+      </div>
+    </div>
+
+    <div class="questions px-2" *ngIf="segment === 'questions'">
+      <p class="text-center mt-2">
+        These messages are public and anyone can view
+      </p>
+
+      <div class="d-flex mt-3">
+        <img src="assets/images/user.png" alt="" />
+        <div>
+          <div class="message">
+            <div class="name font-16">Eena Bahnam Polus E.</div>
+            <div class="txt">
+              This is Eena an Aussie based Graphic Designer & Web Developer will
+              gladly assist you with this task. I'll convert your idea into a
+              unique and creative design that will make you jump out of your
+              seat.
+            </div>
+          </div>
+          <div class="d-flex">
+            <p class="reply">Reply</p>
+            <p class="age">5 hours ago</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

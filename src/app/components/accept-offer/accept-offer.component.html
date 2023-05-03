@@ -1,0 +1,46 @@
+<ion-content>
+  <div class="accept-offer p-4">
+    <div class="d-flex justify-content-end">
+      <button class="close" (click)="close()">
+        <p><ion-icon name="close-outline"></ion-icon></p>
+      </button>
+    </div>
+    <div class="d-flex mt-4">
+      <div class="user-pic">
+        <img src="assets/images/user.png" alt="" />
+      </div>
+      <div class="user-data">
+        <p class="user-name">Vicky</p>
+        <p class="user-task">shift home appliance to new house</p>
+      </div>
+    </div>
+    <p class="summary mt-3">Summary</p>
+    <div class="d-flex justify-content-between mt-2">
+      <p class="task-name">Task Price</p>
+      <p class="task-amount">$14.00</p>
+    </div>
+    <div class="d-flex justify-content-between mt-3">
+      <p class="task-name">Booking Fee</p>
+      <p class="task-amount">$2.90</p>
+    </div>
+    <div class="d-flex justify-content-between mt-3">
+      <p class="total-name">Total</p>
+      <p class="total-amount">$16.90</p>
+    </div>
+
+    <!-- <p class="summary mt-3">Payment Method</p>
+
+    <button class="payment-option-btn">
+      <ion-icon name="card-outline"></ion-icon>
+      <p>Add Credit or Debit card</p>
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </button> -->
+
+    <p class="disclaimer">
+      Payment will be secured inside <a>AirTasker Pay</a> until you're happy the
+      task has brrn completed. <a>View Terms & Conditions</a>.
+    </p>
+
+    <button class="btn-black payment-btn" (click)="submit()">Payment</button>
+  </div>
+</ion-content>

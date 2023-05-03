@@ -15,7 +15,7 @@ import { CommonService } from 'src/app/services/common.service';
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
-  encapsulation:ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class LoginPage implements OnInit {
   loginForm: FormGroup;
@@ -46,6 +46,7 @@ export class LoginPage implements OnInit {
           console.log(res);
           this.common.setLoading(false);
           if (res.statusCode == 200) {
+            this.loginForm.reset();
             this.store.dispatch(new SetUserData(res.data)).subscribe(() => {
               this.router.navigate(['/home']);
             });

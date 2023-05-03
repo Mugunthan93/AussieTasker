@@ -8,6 +8,8 @@ import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
 import { SharedComponentsModule } from 'src/app/components/component.module';
+import { SwiperModule } from 'swiper/angular';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   imports: [
@@ -15,8 +17,10 @@ import { SharedComponentsModule } from 'src/app/components/component.module';
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    SharedComponentsModule
+    SharedComponentsModule,
+    SwiperModule,
+    FontAwesomeModule,
   ],
-  declarations: [HomePage]
+  declarations: [HomePage],
 })
 export class HomePageModule {}

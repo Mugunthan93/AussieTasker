@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { VerifyOTPPageRoutingModule } from './verify-otp-routing.module';
 
 import { VerifyOTPPage } from './verify-otp.page';
+import { SharedComponentsModule } from 'src/app/components/component.module';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { VerifyOTPPage } from './verify-otp.page';
     IonicModule,
     VerifyOTPPageRoutingModule,
     ReactiveFormsModule,
+    SharedComponentsModule,
   ],
   declarations: [VerifyOTPPage],
 })

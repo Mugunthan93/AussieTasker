@@ -29,7 +29,8 @@ import { HTTP } from '@awesome-cordova-plugins/http/ngx';
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    HttpClient, HTTP
+    HttpClient,
+    HTTP,
   ],
   bootstrap: [AppComponent],
 })

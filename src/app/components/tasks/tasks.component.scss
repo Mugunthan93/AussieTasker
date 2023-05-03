@@ -1,0 +1,52 @@
+@media only screen and (min-width:992px) {
+  .filter-float {
+    display: none;
+  }
+}
+
+.tasks {
+  .segment {
+    width: 85% !important;
+  }
+
+  .task-header {
+
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+    width          : 100%;
+
+    .title {
+      width: 80%;
+    }
+
+    .status {
+      display      : inline;
+      border       : 2px solid var(--red);
+      border-radius: 4px;
+      padding      : 3px;
+      margin-left  : 15px;
+      color        : var(--red);
+
+      &.active {
+        border-color: var(--greenLight) !important;
+        color       : #fff !important;
+        background  : var(--greenLight);
+      }
+    }
+  }
+
+  .task-pic {
+    border-radius: 25%;
+    height       : 60px;
+    aspect-ratio : 1/1;
+    padding      : 10px 5px !important;
+    margin       : 0 auto;
+
+    img {
+      width        : 100%;
+      aspect-ratio : 1/1;
+      border-radius: 50%;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+<div class="about-user" *ngIf="!isWeb">
+  <div class="trans-bg">
+    <div class="row justify-content-end">
+      <button class="col-2 close-modal" (click)="cancel()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </button>
+    </div>
+    <div class="content p-3 mt-2">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-3 m-0">
+          <img class="about-pic" src="assets/images/user.png" alt="" />
+        </div>
+        <div class="col-8 p-0">
+          <p class="subHeader">About</p>
+          <h1 class="header">Vigneshwaran</h1>
+        </div>
+      </div>
+      <div class="px-3 mt-4 mb-5">
+        <p class="text-end edit" (click)="editContent()" *ngIf="!isEdit">
+          Edit
+        </p>
+        <p class="text-end edit" (click)="editContent()" *ngIf="isEdit">Save</p>
+        <br />
+        <p class="para" *ngIf="!isEdit">
+          {{ about }}
+        </p>
+
+        <ion-item *ngIf="isEdit">
+          <ion-textarea
+            placeholder="Type something here"
+            [autoGrow]="true"
+            [(ngModel)]="about"
+          >
+          </ion-textarea>
+        </ion-item>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="about-user-web" *ngIf="isWeb">
+  <div class="green-line"></div>
+  <div class="about-content">
+    <h1 class="header">Vigneshwaran</h1>
+    <p class="para">
+      Aussie tasker is a trusted community platform that connects people who
+      need to outsource tasks and find local services, with people who are
+      looking to earn money and ready to work. From simple to complicated tasks,
+      Airtasker can help you complete your home cleaning, handyman jobs, admin
+      work, photography, graphic design or even build a website. Go online or
+      download the app and Aussie tasker will take you from 'things to do' to
+      'everything's done'.
+    </p>
+  </div>
+</div>

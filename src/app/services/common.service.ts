@@ -3,12 +3,19 @@ import { Injectable, OnInit } from '@angular/core';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CommonService implements OnInit {
   loading: any;
+
+  toggleSideMenu = new BehaviorSubject<boolean>(false);
+  screenSize = new BehaviorSubject<number>(0);
+  tabData = new BehaviorSubject<any>('');
+  getisWeb = this.screenSize.asObservable();
+  selectedTask = new BehaviorSubject<any>({});
 
   constructor(
     private http: HttpClient,

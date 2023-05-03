@@ -1,0 +1,277 @@
+.taskDetail {
+  background: #fff;
+  height    : 100vh;
+
+  .green-border {
+    width        : 10px;
+    background   : #6DB411;
+    border-radius: 20px;
+    margin       : 0 10px;
+  }
+
+  .title {
+    font-size  : 14px;
+    font-family: var(--font-bold);
+  }
+
+  .user-pic {
+    width       : 50px;
+    height      : 50px;
+    margin-right: 5px;
+  }
+
+  .name {
+    color: #707070;
+
+    span {
+      color      : #000;
+      font-family: var(--font-semi);
+    }
+
+    .segments {
+      max-height: 90vh;
+      overflow  : hidden;
+    }
+  }
+
+  .open-btn {
+    border       : 2px solid #6DB411;
+    color        : #6DB411;
+    background   : transparent;
+    border-radius: 25px;
+    padding      : 3px 20px;
+  }
+
+  .offer {
+    text-align: center;
+    color     : #707070;
+  }
+
+  .data {
+    img {
+      width       : 20px;
+      height      : 20px;
+      margin-right: 20px;
+    }
+
+    .dataText {
+      color    : #707070;
+      margin   : 0;
+      font-size: 12px;
+
+      span {
+        color      : #000;
+        font-family: var(--font-semi);
+        font-size  : 14px;
+      }
+    }
+  }
+
+  .info {
+    box-shadow   : 0px 0px 20px #6666663B;
+    border-radius: 20px;
+    padding      : 15px;
+    margin-bottom: 20px;
+
+    h5 {
+      font-size  : 20px;
+      font-family: var(--font-bold);
+    }
+
+    p {
+      font-size: 12px;
+      color    : #707070;
+      margin   : 0;
+    }
+
+    .less {
+      text-align : end;
+      color      : #6DB411;
+      font-family: var(--font-semi);
+      margin     : 0;
+    }
+  }
+
+  .makeOffer {
+    border         : 2px solid #6DB411;
+    border-radius  : 15px;
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+    position       : fixed;
+    width          : 90%;
+    bottom         : 0;
+
+    .budget {
+      width: 50%;
+
+      p {
+        color : #707070;
+        margin: 0;
+      }
+
+      p.amount {
+        font-size  : 24px;
+        font-family: var(--font-semi);
+        color      : #000;
+      }
+    }
+
+    .btn-black {
+      height       : 40px;
+      border-radius: 15px;
+      font-size    : 14px;
+    }
+  }
+
+  .report {
+    color    : #707070;
+    cursor   : pointer;
+    font-size: 12px;
+  }
+
+  .offers {
+    max-height: 70vh;
+    overflow-y: auto;
+
+    .warning {
+      display        : flex;
+      justify-content: flex-end;
+      margin-top     : 15px;
+
+      img {
+        width : 40px;
+        height: 40px;
+        margin: 5px 10px;
+      }
+
+      p {
+        width    : 75%;
+        margin   : 0;
+        font-size: 12px;
+      }
+    }
+
+    .linkToJoin {
+      p {
+        color    : #707070;
+        margin   : 0;
+        font-size: 12px;
+
+        span {
+          color      : black;
+          font-family: var(--font-semi);
+          font-size  : 14px;
+        }
+      }
+    }
+
+    .feedback {
+      img {
+        width       : 50px;
+        height      : 50px;
+        margin-right: 10px;
+      }
+
+      p {
+        color    : #707070;
+        font-size: 12px;
+        width    : 60%;
+
+        span {
+          color      : #000;
+          font-size  : 14px;
+          font-family: var(--font-semi);
+        }
+      }
+
+      .rating {
+        ngb-rating {
+          span {
+            color    : var(--ion-color-warning);
+            font-size: 18px;
+          }
+        }
+      }
+
+      .content-text {
+        box-shadow   : 0px 0px 15px #6666663B;
+        border-radius: 20px;
+        padding      : 15px;
+        margin-top   : 15px;
+
+        p {
+          width      : 100%;
+          margin     : 0;
+          white-space: pre-wrap;
+        }
+
+        .less {
+          text-align : end;
+          color      : #6DB411;
+          font-family: var(--font-semi);
+          margin     : 0;
+        }
+      }
+
+      .age {
+        color    : #707070;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .details {
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+}
+
+.btn-green-border {
+  border       : 2px solid #6DB411;
+  color        : #6DB411;
+  background   : transparent;
+  border-radius: 15px;
+  padding      : 3px 5px;
+  font-size    : 12px;
+  height       : 35px;
+}
+
+
+
+
+@media only screen and (min-width:992px) {
+
+  .taskDetail {
+    height: auto;
+
+    .header {
+      display: none;
+    }
+
+    .info {
+      width : 60%;
+      margin: 15px;
+    }
+
+    .details {
+      max-height: none !important;
+    }
+
+    .makeOffer {
+      width       : 40%;
+      border-width: 2px;
+    }
+
+    .title {
+      width    : 50%;
+      font-size: 18px;
+    }
+  }
+
+  ion-modal.offer {
+    &::part(content) {
+      width: 40vw;
+    }
+  }
+}

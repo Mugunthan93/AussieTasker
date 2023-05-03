@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CommonService } from '../services/common.service';
 
 @Component({
   selector: 'app-pages',
@@ -16,8 +17,14 @@ export class PagesPage implements OnInit {
     'verify',
     'changePassword',
     'userDetails',
+    'createTask',
   ];
-  constructor(private router: Router, private route: ActivatedRoute) {
+  isWeb!: boolean;
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private common: CommonService
+  ) {
     this.router.events.subscribe((e: any) => {
       if (e.url) {
         let i = this.urls.findIndex((u) => u == e.url.split('/')[1]);
@@ -28,12 +35,28 @@ export class PagesPage implements OnInit {
         }
       }
     });
+
+    this.common.getisWeb.subscribe({
+      next: (res) => {
+        if (res < 992) {
+          this.isWeb = false;
+        } else {
+          this.isWeb = true;
+        }
+        if (res) {
+          this.reDirection();
+        }
+      },
+    });
   }
 
-  ngOnInit() {
-    if (localStorage.getItem('userData')) {
+  ngOnInit() {}
+
+  reDirection() {
+    let userData = JSON.parse(localStorage.getItem('userData') || 'null');
+    if (userData && !this.isWeb) {
       this.router.navigateByUrl('/home');
-    } else {
+    } else if (!userData && !this.isWeb) {
       this.router.navigateByUrl('/startup');
     }
   }

@@ -1,0 +1,59 @@
+<div class="make-an-offer">
+  <div class="trans-bg">
+    <div class="row justify-content-end">
+      <button class="col-2 close-modal" (click)="cancel()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </button>
+    </div>
+    <div class="content p-3 mt-2">
+      <div class="row align-items-center justify-content-center">
+        <div class="col-3 col-md-2 col-lg-2 m-0">
+          <div class="offer-avatar">
+            <fa-icon [icon]="handShakeIcon"></fa-icon>
+          </div>
+        </div>
+        <div class="col-8 p-0">
+          <p class="subHeader">Make an</p>
+          <h1 class="header">Offer</h1>
+        </div>
+      </div>
+      <div class="px-3 mt-4 mb-5">
+        <ion-label>Description</ion-label>
+        <ion-item counter="true">
+          <ion-textarea
+            placeholder="Write your story"
+            class="storyBox"
+            [autoGrow]="true"
+            value=""
+            maxlength="200"
+            [(ngModel)]="discription"
+          >
+          </ion-textarea>
+        </ion-item>
+
+        <div class="makeOffer mb-4">
+          <div class="budget">
+            <p class="font-12">Task Budget</p>
+            <p class="amount">{{ task.budget | currency }}</p>
+          </div>
+
+          <!-- <ion-label class="mt-4">Offer Amout</ion-label> -->
+          <ion-item class="offerBox">
+            <div class="d-flex align-items-center">
+              <ion-icon name="logo-usd"></ion-icon>
+              <ion-input
+                type="number"
+                placeholder="Offer Amount"
+                class="form_input ms-2"
+                [(ngModel)]="amount"
+                maxlength="10"
+              ></ion-input>
+            </div>
+          </ion-item>
+        </div>
+
+        <button class="btn-black" (click)="submit()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+<div class="faq">
+  <div class="black-bg">
+    <div class="header">
+      <button class="back" (click)="cancel()">
+        <img src="assets/images/back-yellow.png" alt="" />
+      </button>
+      <h1>FAQ</h1>
+      <p>List of tasks posted by users</p>
+    </div>
+    <div class="white-overlay">
+      <div class="scroll p-4">
+        <ng-container *ngTemplateOutlet="FAQ"></ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="web-faq">
+  <ng-container *ngTemplateOutlet="FAQ"></ng-container>
+</div>
+
+<ng-template #FAQ>
+  <div class="search mt-4">
+    <input type="text" class="search_input" placeholder="Search" />
+    <button type="button" class="search_btn">
+      <ion-icon name="search-outline"></ion-icon>
+    </button>
+  </div>
+  <h5 class="my-3"><b>Overview</b></h5>
+  <div class="accord">
+    <ion-accordion-group value="first">
+      <ion-accordion value="first">
+        <ion-item slot="header" color="light">
+          <ion-label>First Accordion</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+          incidunt, optio odio laudantium alias ullam!
+        </div>
+      </ion-accordion>
+      <ion-accordion value="second">
+        <ion-item slot="header" color="light">
+          <ion-label>Second Accordion</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+          incidunt, optio odio laudantium alias ullam!
+        </div>
+      </ion-accordion>
+      <ion-accordion value="third">
+        <ion-item slot="header" color="light">
+          <ion-label>Third Accordion</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+          incidunt, optio odio laudantium alias ullam!
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </div>
+  <h5 class="my-3"><b>Tasker</b></h5>
+  <div class="accord">
+    <ion-accordion-group value="first">
+      <ion-accordion value="first">
+        <ion-item slot="header" color="light">
+          <ion-label>First Accordion</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+          incidunt, optio odio laudantium alias ullam!
+        </div>
+      </ion-accordion>
+      <ion-accordion value="second">
+        <ion-item slot="header" color="light">
+          <ion-label>Second Accordion</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+          incidunt, optio odio laudantium alias ullam!
+        </div>
+      </ion-accordion>
+      <ion-accordion value="third">
+        <ion-item slot="header" color="light">
+          <ion-label>Third Accordion</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore
+          incidunt, optio odio laudantium alias ullam!
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </div>
+</ng-template>

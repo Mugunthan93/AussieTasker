@@ -1,4 +1,14 @@
-
 <ion-content [fullscreen]="true">
-  <h1>Browse</h1>
+  <div class="browse">
+    <div class="black-bg">
+      <div class="header pt-2">
+        <h1 class="mt-3">Browse Tasks</h1>
+        <p>List of tasks posted by users</p>
+      </div>
+
+      <div class="white-overlay pt-2">
+        <app-tasks [data]="taskList"></app-tasks>
+      </div>
+    </div>
+  </div>
 </ion-content>

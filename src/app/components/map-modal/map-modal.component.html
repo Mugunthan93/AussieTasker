@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row p-3">
+    <div class="col-2">
+      <ion-avatar>
+        <img [src]="task.profilePic" alt="" />
+      </ion-avatar>
+    </div>
+    <div class="col-10">
+      <h4 class="text-center">
+        <b>{{ task.taskTitle }}</b>
+      </h4>
+    </div>
+  </div>
+  <p>{{ task.googleResponse.summaryline }}</p>
+  <div class="row mt-4">
+    <div class="col-4">
+      <p class="m-2">
+        <b>Task Title :</b>
+      </p>
+      <p class="m-2">
+        <b>Address :</b>
+      </p>
+      <p class="m-2">
+        <b>Postcode :</b>
+      </p>
+    </div>
+    <div class="col-6">
+      <p class="m-2">
+        {{ task.taskTitle }}
+      </p>
+      <p class="m-2">
+        {{ task.address }}
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- <pre>
+  <code>
+    {{marker | json}}
+  </code>
+
+  <code>
+    {{task | json}}
+  </code>
+</pre> -->

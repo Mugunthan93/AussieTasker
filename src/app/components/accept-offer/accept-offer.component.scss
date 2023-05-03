@@ -1,0 +1,117 @@
+.accept-offer {
+
+  .close {
+    background   : white;
+    width        : 35px;
+    height       : 35px;
+    border-radius: 50%;
+    font-size    : 30px;
+    padding      : 0;
+
+    &:hover {
+      background: #f1f1f1;
+    }
+
+    &:active {
+      transform : scale(0.95);
+      transition: transform ease-in-out 0.5s;
+    }
+  }
+
+  .user-pic {
+    border-radius: 50%;
+    width        : 50px;
+    height       : 50px;
+    aspect-ratio : 1/1;
+    background   : var(--green);
+
+    img {
+      width        : 100%;
+      border-radius: 50%;
+    }
+  }
+
+  .user-data {
+    margin-left: 15px;
+    width      : 60%;
+
+    .user-name {
+      font-size  : 14px;
+      font-family: var(--font-semi);
+    }
+
+    .user-task {
+      font-size: 12px;
+    }
+  }
+
+  .summary {
+    font-size  : 10px;
+    font-family: var(--font-semi);
+    color      : var(--grey);
+  }
+
+  .task-name {
+    font-size: 12px;
+  }
+
+  .task-amount {
+    font-size : 12px;
+    text-align: right;
+  }
+
+  .total-name {
+    font-size  : 14px;
+    color      : black;
+    font-family: var(--font-semi);
+  }
+
+  .total-amount {
+    font-size  : 14px;
+    color      : black;
+    font-family: var(--font-semi);
+    text-align : right;
+  }
+
+  .payment-option-btn {
+    margin-top     : 10px;
+    width          : 100%;
+    display        : inline-flex;
+    justify-content: space-between;
+    align-items    : center;
+    padding        : 15px;
+    background     : white;
+
+    ion-icon {
+      font-size: 20px;
+    }
+
+    &:hover {
+      background: #f1f1f1;
+    }
+
+    &:active {
+      transform : scale(0.95);
+      transition: transform ease-in-out 0.5s;
+    }
+  }
+
+  .disclaimer {
+    font-size : 10px;
+    margin-top: 5rem;
+
+    a {
+      color : var(--ion-color-primary);
+      cursor: pointer;
+    }
+  }
+
+  .payment-btn {
+    position: fixed;
+    bottom  : 1rem;
+    width   : 85%;
+  }
+
+
+
+}

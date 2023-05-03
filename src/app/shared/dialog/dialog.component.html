@@ -1,13 +1,19 @@
-<ion-modal id="example-modal" #modal trigger="open-custom-dialog">
-  <ng-template>
-    <div class="wrapper">
-      <img src="../../../assets/images/success.png" />
-      <ion-item button="true" detail="false" (click)="modal.dismiss()">
-        <ion-icon name="person-circle"></ion-icon>
-        <ion-label>Item 3</ion-label>
-      </ion-item>
-
-      <ion-button></ion-button>
-    </div>
-  </ng-template>
-</ion-modal>
+<div class="wrapper h-100 d-flex ion-align-items-center">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center ion-align-items-center">
+      <ion-col size="10">
+        <ion-img
+          src="../../../assets/images/success.png"
+          class="w-100"
+        ></ion-img>
+        <h1 class="model_header">Posted Successfully!</h1>
+        <p class="model_content">
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+        </p>
+        <button class="btn-black ion-margin-top" (click)="cancel()">
+          GOT IT!
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>

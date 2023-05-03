@@ -13,6 +13,7 @@ import { Select } from '@ngxs/store';
 import { UserDataState } from 'src/app/state/user.state';
 import { Observable } from 'rxjs';
 import { UserData } from 'src/app/Models/userData';
+import { CommonService } from 'src/app/services/common.service';
 
 SwiperCore.use([Pagination]);
 
@@ -28,12 +29,28 @@ export class StartupPage implements OnInit, AfterContentInit {
   swiper?: SwiperComponent;
   slideIndex: number = 0;
   userData!: UserData;
+  isWeb!: boolean;
 
-  constructor(private router: Router, private cdref: ChangeDetectorRef) {
+  constructor(
+    private router: Router,
+    private cdref: ChangeDetectorRef,
+    private common: CommonService
+  ) {
+    this.common.screenSize.next(window.innerWidth);
     this.getUserData$.subscribe((res: any) => {
       if (res && res.length > 0 && this.router.url == '/startup') {
-        // this.router.navigate(['/home']);
       }
+    });
+
+    this.common.getisWeb.subscribe({
+      next: (res) => {
+        if (res < 992) {
+          this.isWeb = false;
+        } else {
+          this.router.navigate(['/home']);
+          this.isWeb = true;
+        }
+      },
     });
   }
 
@@ -58,6 +75,10 @@ export class StartupPage implements OnInit, AfterContentInit {
 
   slideFinish() {
     // localStorage.setItem('startup', 'disabled');
-    this.router.navigate(['/signup']);
+    if (!this.isWeb) {
+      this.router.navigate(['/signup']);
+    } else {
+      this.router.navigate(['/home']);
+    }
   }
 }

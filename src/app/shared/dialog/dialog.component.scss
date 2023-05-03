@@ -1,0 +1,21 @@
+:host {
+  height: 100vh !important;
+
+  .wrapper {
+    --backdrop-opacity   : 0.5 !important;
+    // background        : #000000aa;
+  }
+
+  ion-col {
+    background   : white;
+    border-radius: 8px;
+    padding      : 10px;
+  }
+}
+
+
+@media only screen and (min-width: 992px) {
+  .wrapper {
+    background: transparent !important;
+  }
+}

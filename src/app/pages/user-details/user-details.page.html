@@ -1,76 +1,129 @@
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="user-details">
   <div class="black-bg">
     <div class="header">
       <h1>User Informations</h1>
       <p>Fill your basic Informations</p>
     </div>
-    <div class="white-overlay p-4">
-      <form [formGroup]="userForm" class="pt-5" (ngSubmit)="onSubmit()">
-        <ion-list>
-          <ion-item>
-            <ion-label position="floating">First Name</ion-label>
-            <ion-input
-              placeholder="Enter Name"
-              formControlName="firstName"
-            ></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Last Name</ion-label>
-            <ion-input
-              placeholder="Enter Name"
-              formControlName="lastName"
-            ></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Mobile Number</ion-label>
-            <ion-input
-              type="number"
-              placeholder="Enter Number"
-              formControlName="mobileNumber"
-            ></ion-input>
-          </ion-item>
-          <!-- <ion-item>
-            <ion-label position="floating">Country</ion-label>
-            <ion-select
-              interface="action-sheet"
-              (ionChange)="onchangeCountry($event)"
-            >
-              <ion-select-option
-                *ngFor="let country of countryList"
-                [value]="country"
-                >{{country.name}}</ion-select-option
+    <div class="white-overlay">
+      <div class="scroll p-4">
+        <form [formGroup]="userForm" class="pt-5" (ngSubmit)="onSubmit()">
+          <ion-list>
+            <ion-item>
+              <ion-label position="floating">First Name</ion-label>
+              <ion-input
+                placeholder="Enter Name"
+                formControlName="firstName"
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Last Name</ion-label>
+              <ion-input
+                placeholder="Enter Name"
+                formControlName="lastName"
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Mobile Number</ion-label>
+              <ion-input
+                type="number"
+                placeholder="Enter Number"
+                formControlName="mobileNumber"
+                maxlength="10"
+              ></ion-input>
+            </ion-item>
+            <!-- <ion-item>
+              <ion-label position="floating">Age</ion-label>
+              <ion-input
+                type="number"
+                placeholder="Enter age"
+                formControlName="age"
+                maxlength="2"
+              ></ion-input>
+            </ion-item> -->
+            <ion-item>
+              <ion-label position="floating">Country</ion-label>
+              <ion-select
+                interface="action-sheet"
+                (ionChange)="onchangeCountry($event)"
               >
-            </ion-select>
-          </ion-item> -->
+                <ion-select-option
+                  *ngFor="let country of countryList"
+                  [value]="country"
+                  >{{country.name}}</ion-select-option
+                >
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>Skills</ion-label>
+              <br />
+              <div class="skill-list mt-3">
+                <ion-chip *ngFor="let sk of skills; let j = index">
+                  <ion-label>{{ sk }}</ion-label>
+                  <ion-icon
+                    name="close-circle-outline"
+                    (click)="onDeleteChip(j)"
+                  ></ion-icon>
+                </ion-chip>
+                <div class="add-group" *ngIf="isAddChip">
+                  <input
+                    type="text"
+                    class="addInput"
+                    autofocus
+                    (keyup)="onEnterSkill($event)"
+                  />
+                  <button
+                    class="add-btn"
+                    (click)="onSaveChip(skills)"
+                    [disabled]="!newSkill"
+                  >
+                    <ion-icon name="checkmark-outline"></ion-icon>
+                  </button>
+                </div>
+                <button class="add" (click)="onAddChip()" *ngIf="!isAddChip">
+                  <ion-icon name="add-circle"></ion-icon>
+                </button>
+              </div>
+            </ion-item>
 
-          <!-- <ion-item>
-            <ion-label position="floating">Languages Known</ion-label>
-            <ion-select [multiple]="true" formControlName="languageKnown">
-              <ion-select-option
-                *ngFor="let lang of languages"
-                [value]="lang.name"
-                >{{lang.name}}</ion-select-option
+            <!-- <ion-item>
+              <ion-label position="floating">Languages Known</ion-label>
+              <ion-select [multiple]="true" formControlName="languageKnown">
+                <ion-select-option
+                  *ngFor="let lang of languages"
+                  [value]="lang.name"
+                  >{{lang.name}}</ion-select-option
+                >
+              </ion-select>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating">Skills</ion-label>
+              <ion-textarea formControlName="skills"></ion-textarea>
+            </ion-item>  -->
+
+            <ion-item>
+              <ion-label position="floating">Tag Line</ion-label>
+              <ion-input
+                placeholder="Enter about you"
+                formControlName="tagLine"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="floating"
+                >Working Experience in Years</ion-label
               >
-            </ion-select>
-          </ion-item>
+              <ion-input
+                type="number"
+                placeholder="Enter Experience"
+                formControlName="workingExperience"
+              ></ion-input>
+            </ion-item>
 
-          <ion-item>
-            <ion-label position="floating">Skills</ion-label>
-            <ion-textarea formControlName="skills"></ion-textarea>
-          </ion-item>
-
-          <ion-item>
-            <ion-label position="floating">Working Experience</ion-label>
-            <ion-input
-              type="number"
-              placeholder="Enter Experience"
-              formControlName="workingExperience"
-            ></ion-input>
-          </ion-item> -->
-
-          <button class="btn-black mt-5" type="submit">Submit</button>
-        </ion-list>
-      </form>
+            <button class="btn-black mt-5" type="submit">Submit</button>
+          </ion-list>
+        </form>
+      </div>
     </div>
   </div>
 </ion-content>

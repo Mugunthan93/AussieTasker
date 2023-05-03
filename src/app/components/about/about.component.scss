@@ -1,0 +1,28 @@
+:host {
+  --background: transparent;
+}
+
+@media only screen and (max-width:991px) {
+  .about {
+    display: block;
+  }
+
+  .web-about {
+    display: none;
+  }
+}
+
+@media only screen and (min-width:992px) {
+  .about {
+    display: none;
+  }
+
+  .web-about {
+    display: block;
+
+    .yellow,
+    .green {
+      font-size: 30px;
+    }
+  }
+}

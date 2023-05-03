@@ -85,3 +85,9 @@ ion-modal#verified-modal {
   font-size : 12px;
   color     : var(--grey);
 }
+
+.verify-success {
+  ion-page {
+    background: #fff;
+  }
+}

@@ -1,0 +1,295 @@
+.taskDetail {
+  .green-border {
+    width        : 10px;
+    background   : #6DB411;
+    border-radius: 20px;
+    margin       : 0 10px;
+  }
+
+  .title {
+    font-size  : 14px;
+    font-family: var(--font-bold);
+  }
+
+  .user-pic {
+    width       : 50px;
+    height      : 50px;
+    margin-right: 5px;
+  }
+
+  .name {
+    color: #707070;
+
+    span {
+      color      : #000;
+      font-family: var(--font-semi);
+    }
+  }
+
+  .open-btn {
+    border       : 2px solid #6DB411;
+    color        : #6DB411;
+    background   : transparent;
+    border-radius: 25px;
+    padding      : 3px 20px;
+  }
+
+  .offer {
+    text-align: center;
+    color     : #707070;
+  }
+
+  .data {
+    img {
+      width       : 20px;
+      height      : 20px;
+      margin-right: 20px;
+    }
+
+    .dataText {
+      color    : #707070;
+      margin   : 0;
+      font-size: 12px;
+
+      span {
+        color      : #000;
+        font-family: var(--font-semi);
+        font-size  : 14px;
+      }
+    }
+  }
+
+  .info {
+    box-shadow   : 0px 0px 51px #6666663B;
+    border-radius: 20px;
+    padding      : 15px;
+
+    h5 {
+      font-size  : 20px;
+      font-family: var(--font-bold);
+    }
+
+    p {
+      font-size: 12px;
+      color    : #707070;
+      margin   : 0;
+    }
+
+    .less {
+      text-align : end;
+      color      : #6DB411;
+      font-family: var(--font-semi);
+      margin     : 0;
+    }
+  }
+
+  .makeOffer {
+    border         : 2px solid #6DB411;
+    border-radius  : 15px;
+    display        : flex;
+    justify-content: space-between;
+    align-items    : center;
+    margin-top     : 20px;
+
+    .budget {
+      width: 50%;
+
+      p {
+        color : #707070;
+        margin: 0;
+      }
+
+      p.amount {
+        font-size  : 32px;
+        font-family: var(--font-semi);
+        color      : #000;
+      }
+    }
+
+    .btn-black {
+      height       : 50px;
+      border-radius: 20px;
+    }
+  }
+
+  .report {
+    color : #707070;
+    cursor: pointer;
+  }
+
+  .offers {
+    .warning {
+      display        : flex;
+      justify-content: flex-end;
+      margin-top     : 15px;
+
+      img {
+        width : 40px;
+        height: 40px;
+        margin: 5px 10px;
+      }
+
+      p {
+        width    : 75%;
+        margin   : 0;
+        font-size: 12px;
+      }
+    }
+
+    .linkToJoin {
+      p {
+        color : #707070;
+        margin: 0;
+
+        span {
+          color      : black;
+          font-family: var(--font-semi);
+        }
+      }
+    }
+
+    .feedback {
+      overflow: hidden;
+
+      img {
+        width       : 50px;
+        height      : 50px;
+        margin-right: 10px;
+      }
+
+      p {
+        color    : #707070;
+        font-size: 12px;
+        width    : 60%;
+
+        span {
+          color      : #000;
+          font-size  : 14px;
+          font-family: var(--font-semi);
+        }
+      }
+
+      .rating {
+        ngb-rating {
+          span {
+            color    : var(--ion-color-warning);
+            font-size: 18px;
+          }
+        }
+      }
+
+      .offer-accept {
+        border-radius: 25px;
+        padding      : 8px !important;
+        font-size    : 12px;
+      }
+
+      .offer-amount {
+        font-size  : 20px;
+        color      : var(--green);
+        font-family: var(--font-semi);
+        text-align : right;
+      }
+
+      .content-text {
+        box-shadow   : 0px 0px 51px #6666663B;
+        border-radius: 20px;
+        padding      : 15px;
+        margin-top   : 15px;
+
+        p {
+          width      : 100%;
+          margin     : 0;
+          white-space: pre-wrap;
+        }
+
+        .less {
+          text-align : end;
+          color      : #6DB411;
+          font-family: var(--font-semi);
+          margin     : 0;
+        }
+      }
+
+      .age {
+        color    : #707070;
+        font-size: 12px;
+      }
+    }
+
+    .have {
+      p {
+        margin   : 0;
+        color    : #707070;
+        font-size: 12px;
+
+        span {
+          color      : #000;
+          font-size  : 20px;
+          font-family: var(--font-bold);
+        }
+      }
+    }
+
+    .views {
+      p {
+        margin   : 0;
+        font-size: 12px;
+        color    : #6DB411;
+      }
+
+      .getMore {
+        background   : #07522B;
+        color        : #fff;
+        border-radius: 10px;
+        padding      : 5px 9px;
+      }
+    }
+
+  }
+
+  .questions {
+    p {
+      color    : #707070;
+      font-size: 12px;
+      margin   : 0;
+    }
+
+    img {
+      width : 50px;
+      height: 50px;
+    }
+
+    .message {
+      box-shadow   : 0px 0px 51px #6666663B;
+      border-radius: 20px;
+      padding      : 15px;
+
+      .name {
+
+        font-family: var(--font-semi);
+        color      : #000;
+      }
+
+      .txt {
+        font-size : 12px;
+        margin-top: 5px;
+      }
+    }
+
+    .reply {
+      color       : #6DB411;
+      margin-right: 20px;
+    }
+  }
+}
+
+.btn-green-border {
+  border       : 2px solid #6DB411;
+  color        : #6DB411;
+  background   : transparent;
+  border-radius: 25px;
+  padding      : 3px 12px;
+  font-size    : 12px;
+  height       : 40px;
+}

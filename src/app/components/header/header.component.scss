@@ -1,22 +1,99 @@
 :host,
 ion-toolbar {
-    --background  : transparent !important;
-    --border-width: 0 !important;
+  --background  : transparent !important;
+  --border-width: 0 !important;
 
-    ion-avatar {
-        width : 35px !important;
-        height: 35px !important;
-    }
+  ion-avatar {
+    width : 35px !important;
+    height: 35px !important;
+    cursor: pointer;
+  }
+
+  .avatar {
+    display: none;
+  }
 }
 
-ion-menu-button{
-    display: block;
+ion-menu-button {
+  display: block;
 }
-
 
 
 @media only screen and (min-width:992px) {
-    ion-menu-button{
-        display: none;
+
+  :host,
+  ion-toolbar {
+    --background: #fff !important;
+  }
+
+  .success-modal {
+    &::part(content) {
+      width : 75vw !important;
+      height: 90vh !important;
     }
+  }
+}
+
+
+
+
+.web-btns {
+
+  display: none;
+
+  button {
+    background : transparent;
+    font-family: var(--font-semi);
+    margin     : 10px 25px;
+    color      : #000;
+
+    &:hover {
+      border-bottom: 2px solid #1f1f1f;
+    }
+
+    &.router-link-active {
+      background   : #000;
+      border-radius: 20px;
+      color        : #fff;
+      padding      : 5px 15px;
+
+      &:hover {
+        border: none !important;
+      }
+    }
+
+    &.highlighted {
+      background   : var(--green);
+      border-radius: 20px;
+      color        : var(--yellow);
+      padding      : 5px 15px;
+
+      &:hover {
+        border: none !important;
+      }
+    }
+  }
+}
+
+
+@media only screen and (min-width:992px) {
+
+  ion-menu-button,
+  .menu-btn {
+    display: none;
+  }
+
+  .avatar {
+    cursor : pointer;
+    display: block !important;
+  }
+
+  .web-btns {
+    display: flex;
+  }
+
+  .right {
+    padding: 0 20px 0 0;
+  }
+
 }

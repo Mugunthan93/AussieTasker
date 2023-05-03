@@ -4,37 +4,38 @@
 
 .login {
   .login-grid {
-    height: 100%;
-    display: flex;
+    height     : 100%;
+    display    : flex;
     align-items: center;
   }
+
   .avatar {
-    background: var(--green);
+    background      : var(--green);
     background-image: url("../../../assets/images/login/Logo-aussie-tasker.png");
-    background-size: contain;
-    width: 90%;
-    aspect-ratio: 1/1;
-    border-radius: 50%;
-    margin: 0% 5%;
+    background-size : contain;
+    width           : 90%;
+    aspect-ratio    : 1/1;
+    border-radius   : 50%;
+    margin          : 0% 5%;
   }
 
   .login_header {
-    font-size: 24px;
+    font-size  : 24px;
     font-weight: 900;
     font-family: "Poppins-bold";
-    margin-top: 5%;
+    margin-top : 5%;
   }
 
   .login_subHeader {
     font-size: 14px;
-    margin: 0;
-    color: var(--grey);
+    margin   : 0;
+    color    : var(--grey);
   }
 
   .login_form {
     .form_label {
-      width: 24px;
-      margin-right: 2%;
+      width        : 24px;
+      margin-right : 2%;
       margin-bottom: 0 !important;
     }
 
@@ -48,36 +49,37 @@
 
     .form_icon {
       font-size: 23px;
-      color: var(--grey);
+      color    : var(--grey);
     }
 
     .form_forgot {
       margin: 5px 0;
       cursor: pointer;
+
       a {
-        color: var(--green);
+        color      : var(--green);
         font-family: "Poppins-semibold";
-        font-size: 14px;
+        font-size  : 14px;
       }
     }
 
     .form_login_width {
       font-size: 12px;
-      color: var(--grey);
+      color    : var(--grey);
     }
 
     .login_facebook,
     .login_google {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0px 0px 7px 0px #8d8d8d6e;
-      padding: 10px;
-      width: 97%;
-      display: inline-flex;
-      align-items: center;
-      font-weight: 900;
+      background     : #fff;
+      border-radius  : 12px;
+      box-shadow     : 0px 0px 7px 0px #8d8d8d6e;
+      padding        : 10px;
+      width          : 97%;
+      display        : inline-flex;
+      align-items    : center;
+      font-weight    : 900;
       justify-content: space-evenly;
-      font-size: 14px;
+      font-size      : 14px;
 
       ion-icon {
         font-size: 25px;
@@ -88,31 +90,33 @@
       width: 20px;
     }
 
-    .login_facebook {
+    .login_facebook>span {
       color: #2196f3;
     }
 
-    .login_google {
+    .login_google>span {
       color: #e3665c;
     }
   }
 
   .login_agree {
     font-size: 12px;
-    color: var(--grey);
+    color    : var(--grey);
+
     span {
-      color: var(--green);
+      color : var(--green);
       cursor: pointer;
     }
   }
 
   .login_signUp {
     font-size: 14px;
+
     a {
-      color: var(--green);
-      cursor: pointer;
+      color          : var(--green);
+      cursor         : pointer;
       text-decoration: none;
-      font-family: var(--font-bold);
+      font-family    : var(--font-bold);
     }
   }
 }

@@ -29,6 +29,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class SignupPage implements OnInit, OnDestroy {
   signUpForm: FormGroup;
   @Select(UserDataState.getUserData) userData$!: Observable<UserData[]>;
+  userData: any;
 
   constructor(
     private fb: FormBuilder,
@@ -46,15 +47,25 @@ export class SignupPage implements OnInit, OnDestroy {
           '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}'
         ),
       ]),
+      confirmPassword: new FormControl('', [
+        Validators.required,
+        Validators.pattern(
+          '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-zd$@$!%*?&].{8,}'
+        ),
+      ]),
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   async onSignUp() {
     this.signUpForm.markAllAsTouched();
     this.signUpForm.markAsDirty();
-    if (this.signUpForm.valid) {
+    if (
+      this.signUpForm.valid &&
+      this.signUpForm.get('password')?.value ===
+        this.signUpForm.get('confirmPassword')?.value
+    ) {
       this.common.setLoading(true);
       this.common.closeToast();
       let obj = {
@@ -76,14 +87,18 @@ export class SignupPage implements OnInit, OnDestroy {
             });
             this.store.dispatch(new SetUserData(res.data)).subscribe(() => {
               this.clearForm();
+              this.userData = res.data;
               sessionStorage.setItem('emailId', res.data.emailId);
+              sessionStorage.setItem(
+                'userDetails',
+                JSON.stringify(this.userData)
+              );
               this.sendOTP(res.data.emailId);
             });
           } else {
             this.common.setLoading(false);
             this.common.openToast({ msg: res.message, type: 'error' });
           }
-
         },
         error: (err: any) => {
           this.common.setLoading(false);
@@ -91,6 +106,14 @@ export class SignupPage implements OnInit, OnDestroy {
           console.log(err);
           this.common.setLoading(false);
         },
+      });
+    } else if (
+      this.signUpForm.get('password')?.value !==
+      this.signUpForm.get('confirmPassword')?.value
+    ) {
+      this.common.openToast({
+        msg: 'Password & Confirm password should be same',
+        type: 'error',
       });
     } else if (this.signUpForm.get('email')?.errors) {
       console.log(this.signUpForm);

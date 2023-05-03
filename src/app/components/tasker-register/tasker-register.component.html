@@ -1,0 +1,149 @@
+<ion-content>
+  <div class="tasker-register">
+    <div class="black-bg">
+      <div class="header">
+        <button class="back" (click)="cancel(isEdit ? 'edit' : 'cancel')">
+          <img src="assets/images/back-yellow.png" alt="" />
+        </button>
+        <h1>Register as a Tasker</h1>
+        <p>List of tasks posted by users</p>
+      </div>
+      <div class="white-overlay">
+        <div class="scroll p-4">
+          <ion-list
+            [inset]="true"
+            class="m-0 mt-4 itemList"
+            [ngClass]="isEdit ? 'moveToHide' : ''"
+          >
+            <ion-item
+              lines="full"
+              button
+              detail="true"
+              class="mb-2 border-bottom"
+              (click)="uploadPicture()"
+            >
+              <ion-thumbnail slot="start">
+                <embed
+                  src="assets/images/17 tasker registration/picture.svg"
+                  type=""
+                />
+              </ion-thumbnail>
+              <ion-label> Upload Picture </ion-label>
+            </ion-item>
+
+            <ion-item
+              lines="full"
+              button
+              detail="true"
+              class="mb-2 border-bottom"
+              (click)="accountInfo()"
+            >
+              <ion-thumbnail slot="start">
+                <embed
+                  src="assets/images/17 tasker registration/account.svg"
+                  type=""
+                />
+              </ion-thumbnail>
+              <ion-label> Account Information </ion-label>
+            </ion-item>
+
+            <ion-item
+              lines="full"
+              button
+              detail="true"
+              class="mb-2 border-bottom"
+            >
+              <ion-thumbnail slot="start">
+                <embed
+                  src="assets/images/17 tasker registration/kyc.svg"
+                  type=""
+                />
+              </ion-thumbnail>
+              <ion-label> KYC Documentation </ion-label>
+            </ion-item>
+
+            <ion-item
+              lines="full"
+              button
+              detail="true"
+              class="mb-2 border-bottom"
+            >
+              <ion-thumbnail slot="start">
+                <embed
+                  src="assets/images/17 tasker registration/permit.svg"
+                  type=""
+                />
+              </ion-thumbnail>
+              <ion-label> Work Permit Verification</ion-label>
+            </ion-item>
+          </ion-list>
+
+          <div class="editForm" [ngClass]="isEdit ? 'moveToShow' : ''">
+            <button class="backToList" (click)="isEdit = false">
+              <ion-icon name="arrow-back-outline"></ion-icon>
+            </button>
+
+            <div
+              class="row justify-content-center"
+              *ngIf="formName === 'upload'"
+            >
+              <div class="col-8">
+                <embed
+                  src="assets/images/17 tasker registration/upload a picture.svg"
+                  type=""
+                  class="uploadImage"
+                />
+              </div>
+              <div class="col-12">
+                <button class="btn-black" (click)="onSubmit()">Submit</button>
+              </div>
+            </div>
+
+            <div class="accountForm" *ngIf="formName === 'account'">
+              <p class="form-12 mt-4">
+                Please Provide your bank details so you can get paid. We don't
+                take any money from your account.
+              </p>
+
+              <form [formGroup]="formAccount">
+                <ion-item class="what">
+                  <ion-label position="stacked" class="font-semi"
+                    >Account Holder Name</ion-label
+                  >
+                  <ion-input
+                    placeholder="Vigneshwaran"
+                    formControlName="name"
+                  ></ion-input>
+                </ion-item>
+                <ion-item class="what">
+                  <ion-label position="stacked" class="font-semi"
+                    >Account Number</ion-label
+                  >
+                  <ion-input
+                    placeholder="1234567890"
+                    formControlName="number"
+                    type="number"
+                  ></ion-input>
+                </ion-item>
+                <ion-item class="what">
+                  <ion-label position="stacked" class="font-semi"
+                    >BSB</ion-label
+                  >
+
+                  <ion-input
+                    placeholder="000-000"
+                    formControlName="bsb"
+                    type="number"
+                  ></ion-input>
+                </ion-item>
+                <button class="btn-black mt-5" (click)="onSubmit()">
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

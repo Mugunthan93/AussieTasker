@@ -18,6 +18,7 @@ export class AppComponent implements AfterViewInit {
       showDuration: 2000,
       autoHide: true,
       fadeOutDuration: 1000,
+      fadeInDuration: 500,
     });
   }
 }

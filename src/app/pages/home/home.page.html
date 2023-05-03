@@ -1,81 +1,269 @@
-<ion-content >
-  <div class="home px-4">
+<ion-content>
+  <div class="home-app px-4">
     <div class="row justify-content-center mt-3">
       <div class="col-4 col-sm-3 col-md-2 col-lg-2 col-xl-1">
         <div class="avatar"></div>
       </div>
     </div>
-    <h1 class="user-name mt-4">
-      Welcome Vicky
-    </h1>
-    <p class="user-disc">List of tasks posted by users</p>
+    <h1 class="user-name mt-4">Welcome Vicky</h1>
+    <!-- <p class="user-disc">List of tasks posted by users</p> -->
 
     <div class="search mt-4">
-      <input type="text" class="search_input" placeholder="Search">
-      <button type="button" class="search_btn"><ion-icon name="search-outline"></ion-icon></button>
+      <input type="text" class="search_input" placeholder="Search" />
+      <button type="button" class="search_btn">
+        <ion-icon name="search-outline"></ion-icon>
+      </button>
     </div>
 
     <div class="category mt-3 row justify-content-center">
-      <div class="cat-item col-3 p-0 mx-2">
+      <div
+        *ngFor="let cat of categories"
+        class="cat-item col-3 p-0 mx-2"
+        (click)="openBrowseTask(cat)"
+      >
         <div class="cat-img m-2">
-          <img src="../../../assets/images/repair.png" alt="Repair Services">
+          <img [src]="cat.icon" alt="{{cat.name}}" />
         </div>
-        <p class="cat-txt">
-          Repair Services
-        </p>
-      </div>
-
-      <div class="cat-item col-3 p-0 mx-2">
-        <div class="cat-img m-2">
-          <img src="../../../assets/images/professioal.png" alt="Professional Works">
-        </div>
-        <p class="cat-txt">
-          Professional Works
-        </p>
-      </div>
-
-      <div class="cat-item col-3 p-0 mx-2">
-        <div class="cat-img m-2">
-          <img src="../../../assets/images/gardening.png" alt="Gardening">
-        </div>
-        <p class="cat-txt">
-          Gardening
-        </p>
-      </div>
-
-      <div class="cat-item col-3 p-0 mx-2">
-        <div class="cat-img m-2">
-          <img src="../../../assets/images/business.png" alt="Business Works">
-        </div>
-        <p class="cat-txt">
-          Business Works
-        </p>
-      </div>
-
-      <div class="cat-item col-3 p-0 mx-2">
-        <div class="cat-img m-2">
-          <img src="../../../assets/images/delivery.png" alt="Deliveries">
-        </div>
-        <p class="cat-txt">
-          Deliveries
-        </p>
-      </div>
-
-      <div class="cat-item col-3 p-0 mx-2">
-        <div class="cat-img m-2">
-          <img src="../../../assets/images/marketing.png" alt="Marketing & Design">
-        </div>
-        <p class="cat-txt">
-          Marketing & Design
-        </p>
+        <p class="cat-txt">{{cat.title | titlecase}}</p>
       </div>
     </div>
 
-    <button class="post-Task mt-3">
+    <button class="post-Task mt-3" (click)="openCreateTask('new')">
       Post a Task for Free
     </button>
-    <button class="earn-task mt-3">
+    <button class="earn-task mt-3 mb-5" (click)="openBrowseTask('All')">
       Earn as a Tasker
     </button>
   </div>
+
+  <div class="home-web">
+    <div class="row py-4 px-4">
+      <div class="col-6">
+        <div class="header">
+          <p class="title">Aussie Tasker</p>
+          <p class="header-grey">Easy Way To Get Your</p>
+          <p class="header-green">Works Done</p>
+          <div class="d-flex mt-2">
+            <button class="postTast" (click)="openCreateTask()">
+              Post a Task
+            </button>
+            <button class="takeTast" (click)="openBrowseTask('All')">
+              Browse Task
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="banner1"></div>
+        <div class="banner2"></div>
+      </div>
+    </div>
+
+    <div class="mt-3 doyou">
+      <h1>Do you have Tasks?</h1>
+      <p>Describe | Post | Get Quotes | Approve</p>
+    </div>
+
+    <div class="mt-2">
+      <swiper
+        [slidesPerView]="4"
+        [spaceBetween]="30"
+        [pagination]="{
+      clickable: true
+    }"
+        class="mySwiper"
+      >
+        <ng-template swiperSlide>
+          <button class="swiper-btn">
+            <fa-icon [icon]="repairIcon"></fa-icon>Repair Works
+          </button>
+        </ng-template>
+        <ng-template swiperSlide>
+          <button class="swiper-btn">
+            <fa-icon [icon]="carIcon"></fa-icon>Car Mechanic
+          </button>
+        </ng-template>
+        <ng-template swiperSlide>
+          <button class="swiper-btn">
+            <fa-icon [icon]="cleanIcon"></fa-icon>Cleaing Service
+          </button>
+        </ng-template>
+        <ng-template swiperSlide>
+          <button class="swiper-btn">
+            <fa-icon [icon]="acIcon"></fa-icon>AC Wash
+          </button>
+        </ng-template>
+      </swiper>
+    </div>
+
+    <div class="row my-4 justify-content-center align-items-center">
+      <div class="d-flex col-6 letusknow justify-content-center">
+        <p>Having SomeOther Tasks?</p>
+        <button class="letusknow-btn">Let us Know</button>
+      </div>
+    </div>
+
+    <div class="areYouTasker">
+      <h2 class="head">Are you a Tasker?</h2>
+      <p class="sub-head">Select | Quote | Get Approved | Earn</p>
+      <div class="row justify-content-around">
+        <div class="col-3 m-4">
+          <app-task-card></app-task-card>
+        </div>
+        <div class="col-3 m-4">
+          <app-task-card></app-task-card>
+        </div>
+        <div class="col-3 m-4">
+          <app-task-card></app-task-card>
+        </div>
+        <div class="col-3 m-4">
+          <app-task-card></app-task-card>
+        </div>
+        <div class="col-3 m-4">
+          <app-task-card></app-task-card>
+        </div>
+        <div class="col-3 m-4">
+          <app-task-card></app-task-card>
+        </div>
+      </div>
+
+      <p class="text-center">
+        <a routerLink="/browseTasks" class="browse">Browse More Tasks ></a>
+      </p>
+    </div>
+
+    <div class="count">
+      <div class="row justify-content-center">
+        <div class="col-lg-2">
+          <p class="count-number">25K+</p>
+          <p class="count-head">Completed Cases</p>
+          <p class="count-para">
+            We always provide people a complete solution upon focus of any
+            business
+          </p>
+        </div>
+        <div class="col-lg-2">
+          <p class="count-number">17+</p>
+          <p class="count-head">Our Office</p>
+          <p class="count-para">
+            We always provide people a complete solution upon focus of any
+            business
+          </p>
+        </div>
+        <div class="col-lg-2">
+          <p class="count-number">86+</p>
+          <p class="count-head">Skilled People</p>
+          <p class="count-para">
+            We always provide people a complete solution upon focus of any
+            business
+          </p>
+        </div>
+        <div class="col-lg-2">
+          <p class="count-number">28+</p>
+          <p class="count-head">Happy Clients</p>
+          <p class="count-para">
+            We always provide people a complete solution upon focus of any
+            business
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="become-tasker my-4">
+        <img
+          src="assets/images/become_a_tasker.svg"
+          alt=""
+          class="become-img"
+        />
+        <div class="become-head">
+          <p><span>Having</span> Professional Skills?</p>
+          <p><span>Looking For</span> Opportunities?</p>
+        </div>
+
+        <button class="become-btn">Become a Tasker</button>
+      </div>
+    </div>
+
+    <div class="countries">
+      <p class="country-head">Love to Work in Particular Location?</p>
+      <p class="country-subHead">
+        Post or Browse Tasks in Your Preffered Location
+      </p>
+      <div class="d-flex flex-wrap justify-content-center">
+        <div class="country-card">
+          <div class="card-banner paris">
+            <p class="card-label">Hot</p>
+            <!-- <img class="card-img" src="assets/images/paris.jpg" alt="" /> -->
+          </div>
+          <div class="card-title">Paris, France</div>
+          <div class="d-flex justify-content-between">
+            <p class="card-para">5 Vacancy</p>
+            <p class="card-para">120 companies</p>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <div class="card-banner holand">
+            <p class="card-label">Hot</p>
+            <!-- <img class="card-img" src="assets/images/holand.jpg" alt="" /> -->
+          </div>
+          <div class="card-title">Paris, France</div>
+          <div class="d-flex justify-content-between">
+            <p class="card-para">5 Vacancy</p>
+            <p class="card-para">120 companies</p>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <div class="card-banner paris">
+            <p class="card-label">Hot</p>
+            <!-- <img class="card-img" src="assets/images/paris.jpg" alt="" /> -->
+          </div>
+          <div class="card-title">Paris, France</div>
+          <div class="d-flex justify-content-between">
+            <p class="card-para">5 Vacancy</p>
+            <p class="card-para">120 companies</p>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <div class="card-banner spain">
+            <p class="card-label">Hot</p>
+            <!-- <img class="card-img" src="assets/images/spain.jpg" alt="" /> -->
+          </div>
+          <div class="card-title">Paris, France</div>
+          <div class="d-flex justify-content-between">
+            <p class="card-para">5 Vacancy</p>
+            <p class="card-para">120 companies</p>
+          </div>
+        </div>
+
+        <div class="country-card">
+          <div class="card-banner holand">
+            <p class="card-label">Hot</p>
+            <!-- <img class="card-img" src="assets/images/holand.jpg" alt="" /> -->
+          </div>
+          <div class="card-title">Paris, France</div>
+          <div class="d-flex justify-content-between">
+            <p class="card-para">5 Vacancy</p>
+            <p class="card-para">120 companies</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <app-footer></app-footer>
+  </div>
 </ion-content>
+
+<ion-modal
+  id="verified-modal"
+  class="success"
+  #successModal
+  trigger="open-custom-dialog"
+>
+  <ng-template>
+    <app-dialog></app-dialog>
+  </ng-template>
+</ion-modal>

@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
-import { GetUserData, SetUserData } from '../actions/user.action';
+import {
+  DeleteUserData,
+  GetUserData,
+  SetUserData,
+} from '../actions/user.action';
 import { UserData } from '../Models/userData';
 
 export class userDataModel {
@@ -35,5 +39,10 @@ export class UserDataState {
   getTodos({ getState }: StateContext<GetUserData>) {
     console.log(getState(), 'Action');
     return getState();
+  }
+
+  @Action(DeleteUserData)
+  deleteUserData(ctx: StateContext<any>) {
+    const state = ctx.setState(null);
   }
 }

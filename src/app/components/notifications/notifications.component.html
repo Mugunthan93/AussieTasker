@@ -1,0 +1,55 @@
+<ion-content class="notification" *ngIf="!isWeb">
+  <div class="black-bg">
+    <div class="header">
+      <button class="back" (click)="cancel()">
+        <img src="assets/images/back-yellow.png" alt="" />
+      </button>
+      <h1>Notifications</h1>
+      <p>List of tasks posted by users</p>
+    </div>
+    <div class="white-overlay">
+      <div class="scroll p-4">
+        <ng-container *ngTemplateOutlet="Notification"></ng-container>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<div class="web-notification" *ngIf="isWeb">
+  <ng-container *ngTemplateOutlet="Notification"></ng-container>
+</div>
+
+<ng-template #Notification>
+  <div class="segment">
+    <ion-segment
+      color="light"
+      value="all"
+      mode="ios"
+      (ionChange)="changeSegment($event)"
+    >
+      <ion-segment-button value="all">
+        <ion-label>All</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="unread">
+        <ion-label>Unread</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div class="notes" *ngIf="segment === 'all'">
+    <ion-item>
+      <ion-avatar slot="start">
+        <img alt="Silhouette of a person's head" src="assets/images/user.png" />
+      </ion-avatar>
+      <ion-label>
+        Raj wants to follows you <br /><span>2 days ago</span></ion-label
+      >
+    </ion-item>
+  </div>
+
+  <div class="unread" *ngIf="segment === 'unread'">
+    <div class="empty">
+      <ion-icon name="notifications-off"></ion-icon>
+    </div>
+  </div>
+</ng-template>

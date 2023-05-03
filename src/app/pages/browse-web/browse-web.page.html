@@ -1,0 +1,21 @@
+<ion-content class="browseTask" [fullscreen]="true">
+  <ion-grid class="h-100">
+    <ion-row class="h-100">
+      <ion-col sizeLg="4" sizeMd="4">
+        <div class="task-list">
+          <app-tasks [data]="taskList"></app-tasks>
+        </div>
+      </ion-col>
+      <ion-col sizeLg="8" sizeMd="8">
+        <div class="task-detail" *ngIf="selectedTask">
+          <app-task-details></app-task-details>
+        </div>
+        <div class="row h-100" *ngIf="!selectedTask">
+          <div class="container">
+            <capacitor-google-map #map></capacitor-google-map>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

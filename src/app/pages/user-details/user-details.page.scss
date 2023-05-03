@@ -1,0 +1,63 @@
+.user-details {
+  .skill-list {
+    display  : flex;
+    flex-wrap: wrap;
+    width    : 70%;
+
+    ion-chip {
+      background: #F0EFEF;
+      color     : #656464;
+      margin    : 0 10px 10px 0 !important;
+      font-size : 12px;
+    }
+  }
+
+  .add {
+    background   : transparent;
+    border       : none;
+    border-radius: 25%;
+    font-size    : 20px;
+    width        : 35px;
+    aspect-ratio : 1/1;
+
+    ion-icon {
+      color: var(--green) !important;
+    }
+  }
+
+  .add-group {
+    display: flex;
+
+    .addInput {
+      width                    : 100px;
+      height                   : 35px;
+      max-width                : 150px;
+      border                   : 1px solid var(--grey);
+      border-top-left-radius   : 20px;
+      border-bottom-left-radius: 20px;
+      padding                  : 0 10px;
+      margin-bottom            : 15px;
+
+      &:focus-visible {
+        outline: none;
+        border : 1px solid var(--grey);
+      }
+    }
+
+    .add-btn {
+      background                : var(--green);
+      height                    : 35px;
+      width                     : 35px;
+      border-top-right-radius   : 20px;
+      border-bottom-right-radius: 20px;
+
+      ion-icon {
+        color: var(--yellow);
+      }
+
+      &:disabled {
+        opacity: 0.75;
+      }
+    }
+  }
+}

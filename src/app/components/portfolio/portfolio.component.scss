@@ -1,0 +1,33 @@
+.portfolio {
+  background: #000000b8;
+  height    : 100vh;
+
+  .port-img {
+    width        : 100%;
+    border-radius: 8px;
+    box-shadow   : 0px 0px 51px #66666673;
+  }
+}
+
+
+@media only screen and (min-width:992px) {
+  .portfolio {
+    background: transparent !important;
+    height    : fit-content !important;
+
+    .trans-bg {
+      position: unset !important;
+      width   : unset !important;
+    }
+
+    .content {
+      border       : none !important;
+      border-radius: 0 !important;
+    }
+
+    .port-img {
+      border-radius: 8px;
+      box-shadow   : 0px 0px 21px #66666673;
+    }
+  }
+}

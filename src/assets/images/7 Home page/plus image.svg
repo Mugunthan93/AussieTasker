@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <style>
+      .cls-1 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        font-size: 150px;
+        fill: #ffd550;
+        text-anchor: middle;
+        font-family: Poppins;
+      }
+    </style>
+  </defs>
+  <path class="cls-1" d="M100.566,8.787l89.571,86.8a2.835,2.835,0,0,1,.063,4.008l-86.795,89.572a2.836,2.836,0,0,1-4.008.063L9.825,102.43a2.835,2.835,0,0,1-.063-4.009L96.557,8.85A2.835,2.835,0,0,1,100.566,8.787Z"/>
+  <text id="_" data-name="+" class="cls-2" x="100.151" y="155"><tspan x="100.151">+</tspan></text>
+</svg>

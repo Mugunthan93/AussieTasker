@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ProfileComponent } from '../components/profile/profile.component';
 
 import { PagesPage } from './pages.page';
 
@@ -8,6 +9,11 @@ const routes: Routes = [
     path: '',
     component: PagesPage,
     children: [
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full',
+      },
       {
         path: 'home',
         loadChildren: () =>
@@ -31,8 +37,26 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'browseTasks',
+        loadChildren: () =>
+          import('./browse-web/browse-web.module').then(
+            (m) => m.BrowseWebPageModule
+          ),
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+      },
+      {
+        path: 'settings',
+        loadChildren: () =>
+          import('./settings/settings.module').then(
+            (m) => m.SettingsPageModule
+          ),
+      },
+      {
         path: '**',
-        redirectTo: 'signup',
+        redirectTo: 'startup',
         pathMatch: 'full',
       },
     ],
@@ -77,7 +101,11 @@ const routes: Routes = [
       import('./user-details/user-details.module').then(
         (m) => m.UserDetailsPageModule
       ),
+  },  {
+    path: 'payment',
+    loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule)
   },
+
 ];
 
 @NgModule({

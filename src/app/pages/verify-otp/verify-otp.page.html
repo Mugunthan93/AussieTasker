@@ -18,10 +18,7 @@
         class="ion-justify-content-center ion-items-center ion-margin-top login_form"
       >
         <ion-col size="10">
-          <form
-            autocomplete="off"
-            [formGroup]="otpForm"
-          >
+          <form autocomplete="off" [formGroup]="otpForm">
             <div class="d-flex ion-justify-content-center">
               <input
                 type="number"
@@ -101,7 +98,7 @@
   </div>
 </ion-content>
 
-<ion-modal id="verified-modal" #modal trigger="open-custom-dialog">
+<!-- <ion-modal id="verified-modal" #modal trigger="open-custom-dialog">
   <ng-template>
     <div class="wrapper h-100 d-flex ion-align-items-center">
       <ion-grid>
@@ -120,5 +117,17 @@
         </ion-row>
       </ion-grid>
     </div>
+  </ng-template>
+</ion-modal> -->
+
+<ion-modal
+  id="verified-modal"
+  class="verify-success"
+  class="success"
+  #successModal
+  trigger="open-custom-dialog"
+>
+  <ng-template>
+    <app-dialog (onClose)="logIn()"></app-dialog>
   </ng-template>
 </ion-modal>
