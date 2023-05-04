@@ -104,9 +104,7 @@ export class CreateTaskComponent implements OnInit {
       next: (res: any) => {
         this.categories = res.data;
       },
-      error: (err: any) => {
-        console.log(err);
-      },
+      error: (err: any) => {},
     });
   }
 
@@ -189,7 +187,6 @@ export class CreateTaskComponent implements OnInit {
   }
 
   ondatePick(e: any, dateTime: IonModal) {
-    console.log(e);
     dateTime?.dismiss();
     let options: any = {
       weekday: 'short',
@@ -206,46 +203,6 @@ export class CreateTaskComponent implements OnInit {
   onFocus(dateTime: IonModal) {
     dateTime.present();
   }
-
-  // dropped(e: any) {
-  //   console.log(e[0].fileEntry);
-  //   this.files = e;
-  //   for (const droppedFile of e) {
-  //     if (droppedFile.fileEntry.isFile) {
-  //       const fileEntry = droppedFile.fileEntry as FileSystemFileEntry;
-  //       fileEntry.file((file: File) => {
-  //         // Here you can access the real file
-  //         console.log(droppedFile.relativePath, file);
-  //       });
-  //     }
-  //   }
-  // }
-
-  // fileOver(e: any) {
-  //   console.log(e);
-  //   let arr: any = [];
-
-  //   let file = new FileReader();
-
-  //   file.onload = (e: any) => {
-  //     arr.push(e.target.result);
-
-  //     console.log(arr);
-  //   };
-  // }
-
-  // fileLeave(e: any) {
-  //   console.log(e);
-  //   let arr: any = [];
-
-  //   let file = new FileReader();
-
-  //   file.onload = (e: any) => {
-  //     arr.push(e.target.result);
-
-  //     console.log(arr);
-  //   };
-  // }
 
   async modalCal(parms: any) {
     const modal = await this.modalCtrl.create({
@@ -268,7 +225,6 @@ export class CreateTaskComponent implements OnInit {
     this.geolocation
       .getCurrentPosition()
       .then((resp) => {
-        console.log(resp);
         this.location = resp.coords.latitude + ', ' + resp.coords.longitude;
         this.formTwo.controls['location'].patchValue(
           resp.coords.latitude + ', ' + resp.coords.longitude
@@ -276,9 +232,7 @@ export class CreateTaskComponent implements OnInit {
         this.formTwo.controls['latitude'].patchValue(resp.coords.latitude);
         this.formTwo.controls['longitude'].patchValue(resp.coords.longitude);
       })
-      .catch((error) => {
-        console.log('Error getting location', error);
-      });
+      .catch((error) => {});
   }
 
   checkDirty(formControl: any) {
@@ -436,7 +390,6 @@ export class CreateTaskComponent implements OnInit {
       this.userData$.subscribe(async (res: any) => {
         if (res && res.length > 0) {
           this.loggedIn = true;
-          console.log(res[0]);
           this.userData = res[0].userDetails;
           this.SubmitTask(successModal);
         } else {
@@ -451,8 +404,6 @@ export class CreateTaskComponent implements OnInit {
   }
 
   onSelectTime(e: any) {
-    // console.log(e.detail.value, this.formOne.controls['taskWhen'].value);
-
     if (e.detail.value == 'On Date' || e.detail.value == 'Before Date') {
       this.showDatePicker = true;
     } else {
@@ -462,7 +413,6 @@ export class CreateTaskComponent implements OnInit {
   }
 
   onChangeCertain(e: any) {
-    console.log(e.detail.checked);
     if (e.detail.checked) {
       this.showPeriod = true;
     } else {
@@ -472,7 +422,6 @@ export class CreateTaskComponent implements OnInit {
   }
 
   onChangePeriod(e: any) {
-    // console.log(e.detail.checked, e.detail.value);
     this.periods.push(e);
     let time = '';
     if (this.periods.length == 0) {
@@ -499,9 +448,7 @@ export class CreateTaskComponent implements OnInit {
             subCategory: this.subCategories[0]?.masterId,
           });
         },
-        error: (err: any) => {
-          console.log(err);
-        },
+        error: (err: any) => {},
       });
     }
   }

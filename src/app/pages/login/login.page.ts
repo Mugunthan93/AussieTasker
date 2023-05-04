@@ -43,7 +43,6 @@ export class LoginPage implements OnInit {
       this.common.closeToast();
       await this.apiService.onUserLogin(this.loginForm.value).subscribe({
         next: (res: any) => {
-          console.log(res);
           this.common.setLoading(false);
           if (res.statusCode == 200) {
             this.loginForm.reset();
@@ -55,7 +54,6 @@ export class LoginPage implements OnInit {
           }
         },
         error: (err) => {
-          alert(JSON.stringify(err));
           this.common.setLoading(false);
         },
       });

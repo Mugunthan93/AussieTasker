@@ -13,6 +13,8 @@ import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { UserDataState } from './state/user.state';
 import { PasswordState } from './state/passwordType.state';
 import { HTTP } from '@awesome-cordova-plugins/http/ngx';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +27,10 @@ import { HTTP } from '@awesome-cordova-plugins/http/ngx';
     HttpClientModule,
     NgxsStoragePluginModule.forRoot({
       key: UserDataState,
+    }),
+    NgxsLoggerPluginModule.forRoot({
+      collapsed: true,
+      disabled: environment.production,
     }),
   ],
   providers: [

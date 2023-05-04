@@ -30,7 +30,6 @@ export class MakeAnOfferComponent implements OnInit {
     this.userData$.subscribe((res: any) => {
       if (res && res.length > 0) {
         this.userData = res[0];
-        console.log(this.userData);
       }
     });
 

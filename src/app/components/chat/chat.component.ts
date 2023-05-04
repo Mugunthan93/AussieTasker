@@ -41,7 +41,6 @@ export class ChatComponent implements OnInit {
   ngOnInit() {}
 
   sendMsg() {
-    console.log(this.chat.nativeElement?.scrollHeight);
     if (this.msgEntered) {
       this.messages.push({
         user: this.currentUser,

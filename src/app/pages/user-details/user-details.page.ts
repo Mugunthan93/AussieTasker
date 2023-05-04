@@ -42,15 +42,12 @@ export class UserDetailsPage implements OnInit {
         this.countryList = data;
         this.getLanguages();
       },
-      error: (err) => {
-        console.log(err);
-      },
+      error: (err) => {},
     });
 
     this.userData$.subscribe((res: any) => {
       if (res && res.length > 0) {
         this.userData = res[0];
-        console.log(this.userData);
       }
     });
   }
@@ -108,11 +105,9 @@ export class UserDetailsPage implements OnInit {
       tagLine: this.userForm.get('tagLine')?.value,
     };
 
-    console.log(req);
-
     this.common.setLoading(true);
 
-    await this.api.onCreateProfile(req).subscribe({
+    this.api.onCreateProfile(req).subscribe({
       next: () => {
         this.userForm.reset();
         this.common.setLoading(false);
@@ -120,14 +115,12 @@ export class UserDetailsPage implements OnInit {
       },
       error: (err) => {
         this.common.setLoading(false);
-        console.log(err.message);
         this.common.openToast({ msg: err.message, type: 'error' });
       },
     });
   }
 
   onEnterSkill(e: any) {
-    // console.log(e);
     this.newSkill = e.target.value;
   }
 

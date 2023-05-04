@@ -80,7 +80,6 @@ export class ProfileComponent implements OnInit {
   }
 
   onChangeSegment(e: any) {
-    console.log(e);
     this.segment = e.detail.value;
   }
 

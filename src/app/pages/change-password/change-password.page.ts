@@ -68,7 +68,6 @@ export class ChangePasswordPage implements OnInit {
             }
           },
           error: (err) => {
-            alert(JSON.stringify(err));
             this.common.setLoading(false);
           },
         });

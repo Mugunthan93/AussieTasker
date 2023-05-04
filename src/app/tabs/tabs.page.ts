@@ -40,7 +40,6 @@ export class TabsPage {
   }
 
   onTabChange(e: any) {
-    console.log(e);
     this.store.dispatch(new SetTabData(e.tab));
     this.common.tabData.next(e);
   }

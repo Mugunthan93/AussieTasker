@@ -55,7 +55,6 @@ export class VerifyOTPPage implements OnInit, OnDestroy {
     });
 
     this.passType$.subscribe((res: any) => {
-      console.log(res);
       this.passType = res;
     });
   }

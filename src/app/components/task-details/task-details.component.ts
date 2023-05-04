@@ -69,7 +69,6 @@ export class TaskDetailsComponent implements OnInit {
     const { data, role } = await modal.onWillDismiss();
 
     if (role === 'confirm') {
-      console.log(data);
       this.successModal?.present();
     }
   }

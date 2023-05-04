@@ -102,8 +102,6 @@ export class SignupPage implements OnInit, OnDestroy {
         },
         error: (err: any) => {
           this.common.setLoading(false);
-          alert(JSON.stringify(err));
-          console.log(err);
           this.common.setLoading(false);
         },
       });
@@ -116,11 +114,8 @@ export class SignupPage implements OnInit, OnDestroy {
         type: 'error',
       });
     } else if (this.signUpForm.get('email')?.errors) {
-      console.log(this.signUpForm);
       this.common.openToast({ msg: 'Enter Valid Email', type: 'error' });
     } else {
-      console.log(this.signUpForm);
-
       this.common.openToast({ msg: 'Enter strong password', type: 'error' });
     }
   }
@@ -153,9 +148,7 @@ export class SignupPage implements OnInit, OnDestroy {
           this.common.openToast({ msg: res.message, type: 'error' });
         }
       },
-      error: (err) => {
-        alert(JSON.stringify(err));
-      },
+      error: (err) => {},
     });
   }
 

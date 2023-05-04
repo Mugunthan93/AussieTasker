@@ -1,8 +1,6 @@
 export class SetTabData {
   static readonly type = '[TabData] Add';
-  constructor(public payload: string) {
-    console.log(payload);
-  }
+  constructor(public payload: string) {}
 }
 
 export class GetTabData {

@@ -20,9 +20,7 @@ export class PaymentPage implements OnInit {
   ngOnInit() {}
 
   async paymentSheet() {
-    Stripe.addListener(PaymentSheetEventsEnum.Completed, () => {
-      console.log(PaymentSheetEventsEnum.Completed);
-    });
+    Stripe.addListener(PaymentSheetEventsEnum.Completed, () => {});
 
     // const { paymentIntent, ephemeralKey, customer } = await this.http
     //   .post<{

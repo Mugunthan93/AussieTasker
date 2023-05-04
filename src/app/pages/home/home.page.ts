@@ -53,9 +53,7 @@ export class HomePage implements OnInit {
       next: (res: any) => {
         this.categories = res.data;
       },
-      error: (err: any) => {
-        console.log(err);
-      },
+      error: (err: any) => {},
     });
   }
 

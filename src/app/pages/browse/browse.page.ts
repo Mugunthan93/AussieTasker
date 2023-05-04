@@ -42,12 +42,10 @@ export class BrowsePage implements OnInit, AfterContentInit {
     this.common.setLoading(true);
     this.api.getAllTasks().subscribe({
       next: (res: any) => {
-        console.log(res);
         this.taskList = res.data;
         this.common.setLoading(false);
       },
       error: (err: any) => {
-        console.log(err);
         this.common.openToast({ msg: err.error.message, type: 'error' });
         this.common.setLoading(false);
       },

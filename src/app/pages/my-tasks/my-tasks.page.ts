@@ -52,13 +52,11 @@ export class MyTasksPage implements OnInit, AfterViewInit {
     this.api.getAllMyTasks().subscribe({
       next: (e: any) => {
         this.common.setLoading(false);
-        console.log(e);
         if (e.data) {
           this.tasksList = e.data;
         }
       },
       error: (err) => {
-        console.log(err);
         this.common.setLoading(false);
       },
     });
@@ -74,7 +72,6 @@ export class MyTasksPage implements OnInit, AfterViewInit {
     const { data, role } = await modal.onWillDismiss();
 
     if (role === 'confirm') {
-      console.log(data);
       this.successModal?.present();
     }
   }

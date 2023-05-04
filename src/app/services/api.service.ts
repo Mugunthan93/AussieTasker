@@ -322,7 +322,6 @@ export class ApiService {
     );
   }
   updateBusinessData(body: any) {
-    console.log('body', body);
     return this.https.put(
       this.BASE_URL +
         'updateBusinessInformation' +
@@ -366,7 +365,6 @@ export class ApiService {
     });
   }
   updatePaymentData(body: any) {
-    console.log('body', body);
     return this.https.put(
       this.BASE_URL + 'updatePaymentHistory' + '?token=' + this.userData.token,
       body
@@ -501,7 +499,6 @@ export class ApiService {
     );
   }
   raiseInvoice(req: any) {
-    console.log('req', req);
     return this.https.post(
       this.BASE_URL + 'raiseInvoice' + '?token=' + this.userData.token,
       req

@@ -43,6 +43,7 @@
     "@ionic-native/stripe": "^5.36.0",
     "@ionic/angular": "^6.1.9",
     "@ng-bootstrap/ng-bootstrap": "^14.0.0",
+    "@ngxs/logger-plugin": "^3.8.0",
     "@ngxs/storage-plugin": "^3.7.6",
     "@ngxs/store": "^3.7.6",
     "@popperjs/core": "^2.11.7",

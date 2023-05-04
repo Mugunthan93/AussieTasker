@@ -44,13 +44,11 @@ export class BrowseWebPage implements OnInit {
   getAllTasks() {
     this.api.getAllTasks().subscribe({
       next: (res: any) => {
-        console.log(res);
         this.taskList = res.data;
         this.common.setLoading(false);
         this.addMarkers();
       },
       error: (err: any) => {
-        console.log(err);
         this.common.openToast({ msg: err.error.message, type: 'error' });
         this.common.setLoading(false);
       },
@@ -92,7 +90,6 @@ export class BrowseWebPage implements OnInit {
     await this.newMap?.addMarkers(markers);
 
     this.newMap?.setOnMarkerClickListener(async (marker: any) => {
-      console.log(marker);
       let task = this.taskList.find(
         (tsk: any) => tsk.taskTitle == marker.title
       );

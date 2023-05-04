@@ -36,7 +36,6 @@ export class HeaderComponent implements OnInit {
   ) {
     this.router.events.subscribe((data: NavigationEvent) => {
       if (data instanceof NavigationEnd) {
-        console.log(data);
         this.currentUrl = data.url;
       }
     });

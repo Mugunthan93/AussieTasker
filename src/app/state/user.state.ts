@@ -28,7 +28,6 @@ export class UserDataState {
 
   @Action(SetUserData)
   setUserData(ctx: StateContext<userDataModel>, { payload }: SetUserData) {
-    console.log(payload);
     if (!payload) return;
     const state = ctx.getState();
 
@@ -37,7 +36,6 @@ export class UserDataState {
 
   @Action(GetUserData)
   getTodos({ getState }: StateContext<GetUserData>) {
-    console.log(getState(), 'Action');
     return getState();
   }
 
